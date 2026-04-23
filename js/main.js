@@ -102,28 +102,39 @@ function handleNewsletter(e) {
   const originalText = btn.textContent;
   btn.textContent = 'Enviando...';
 
-  fetch('/api/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: emailInput.value })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        success.style.display = 'block';
-        success.textContent = data.message;
-        e.target.reset();
+  (async () => {
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value })
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      let data = null;
+
+      if (contentType.includes('application/json')) {
+        data = await response.json();
       } else {
-        alert('Erro: ' + data.message);
+        const rawBody = await response.text();
+        throw new Error(`Resposta inesperada da API (${response.status}).` +
+          (rawBody ? ` Trecho: ${rawBody.slice(0, 120)}` : ''));
       }
-    })
-    .catch(err => {
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || `Falha na inscrição (${response.status}).`);
+      }
+
+      success.style.display = 'block';
+      success.textContent = data.message;
+      e.target.reset();
+    } catch (err) {
       console.error('Erro na newsletter:', err);
-      alert('Não foi possível conectar ao servidor da newsletter.');
-    })
-    .finally(() => {
+      alert('Erro na newsletter: ' + (err.message || 'Falha de conexão.'));
+    } finally {
       btn.textContent = originalText;
-    });
+    }
+  })();
 }
 
 /* ── GLASS CARD CURSOR HIGHLIGHT ── */
