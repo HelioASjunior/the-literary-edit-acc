@@ -1,14 +1,15 @@
 module.exports = async (req, res) => {
   try {
-    const { GoogleSpreadsheet } = require('google-spreadsheet');
-    const { JWT } = require('google-auth-library');
+    const {
+      buildSheetsClient,
+      getMissingVars,
+      ensureSheet,
+      getRows,
+      appendRow
+    } = require('./_sheets');
 
     const { reviewId } = req.query || {};
-    const missingVars = [
-      'GOOGLE_SERVICE_ACCOUNT_EMAIL',
-      'GOOGLE_PRIVATE_KEY',
-      'GOOGLE_SHEET_ID'
-    ].filter((key) => !process.env[key]);
+    const missingVars = getMissingVars();
 
     if (missingVars.length) {
       return res.status(500).json({
@@ -17,33 +18,21 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Configuração da autenticação
-    const serviceAccountAuth = new JWT({
-      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
+    const sheets = buildSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const sheetTitle = 'Comentarios';
 
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
-
-    await doc.loadInfo();
-    // Busca a aba "Comentarios". Se não existir, usa a segunda aba (índice 1).
-    let sheet = doc.sheetsByTitle['Comentarios'];
-    if (!sheet) {
-      // Se não existir a aba por nome, tentamos criar ou usar a segunda aba
-      sheet = doc.sheetsByIndex[1] || await doc.addSheet({ title: 'Comentarios', headerValues: ['ReviewID', 'Nome', 'Texto', 'Data'] });
-    }
+    await ensureSheet(sheets, spreadsheetId, sheetTitle);
 
     if (req.method === 'GET') {
       if (!reviewId) return res.status(400).json({ success: false, message: 'ReviewID necessário.' });
-      
-      const rows = await sheet.getRows();
+      const rows = await getRows(sheets, spreadsheetId, sheetTitle);
       const comments = rows
-        .filter(row => row.get('ReviewID') === reviewId)
-        .map(row => ({
-          name: row.get('Nome'),
-          text: row.get('Texto'),
-          date: row.get('Data')
+        .filter((row) => String(row[0] || '') === reviewId)
+        .map((row) => ({
+          name: row[1] || '',
+          text: row[2] || '',
+          date: row[3] || ''
         }))
         .reverse(); // Mais recentes primeiro
 
@@ -57,12 +46,12 @@ module.exports = async (req, res) => {
         return res.status(400).json({ success: false, message: 'Campos incompletos.' });
       }
 
-      await sheet.addRow({
-        ReviewID: postReviewId,
-        Nome: name,
-        Texto: text,
-        Data: new Date().toISOString()
-      });
+      await appendRow(sheets, spreadsheetId, sheetTitle, [
+        String(postReviewId),
+        String(name),
+        String(text),
+        new Date().toISOString()
+      ]);
 
       return res.status(201).json({ success: true, message: 'Comentário publicado!' });
     }

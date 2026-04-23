@@ -1,7 +1,12 @@
 module.exports = async (req, res) => {
   try {
-    const { GoogleSpreadsheet } = require('google-spreadsheet');
-    const { JWT } = require('google-auth-library');
+    const {
+      buildSheetsClient,
+      getMissingVars,
+      ensureSheet,
+      getRows,
+      appendRow
+    } = require('./_sheets');
 
     if (req.method !== 'POST') {
       return res.status(405).json({ success: false, message: 'Método não permitido.' });
@@ -14,11 +19,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({ success: false, message: 'E-mail inválido.' });
     }
 
-    const missingVars = [
-      'GOOGLE_SERVICE_ACCOUNT_EMAIL',
-      'GOOGLE_PRIVATE_KEY',
-      'GOOGLE_SHEET_ID'
-    ].filter((key) => !process.env[key]);
+    const missingVars = getMissingVars();
 
     if (missingVars.length) {
       return res.status(500).json({
@@ -27,32 +28,22 @@ module.exports = async (req, res) => {
       });
     }
 
-    // Autenticação com a Conta de Serviço
-    const serviceAccountAuth = new JWT({
-      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
+    const sheets = buildSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const sheetTitle = 'Newsletter';
 
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
-    
-    // Carrega o documento
-    await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0]; // Primeira aba
-
-    // Verifica se já existe (opcional, para evitar duplicados na planilha)
-    const rows = await sheet.getRows();
-    const jaExiste = rows.some(row => row.get('Email') === email);
+    await ensureSheet(sheets, spreadsheetId, sheetTitle);
+    const rows = await getRows(sheets, spreadsheetId, sheetTitle);
+    const jaExiste = rows.some((row) => String(row[0] || '').trim().toLowerCase() === email.toLowerCase());
 
     if (jaExiste) {
       return res.status(200).json({ success: true, message: 'Você já está inscrito!' });
     }
 
-    // Adiciona o novo e-mail e a data
-    await sheet.addRow({
-      Email: email,
-      Data: new Date().toLocaleString('pt-BR')
-    });
+    await appendRow(sheets, spreadsheetId, sheetTitle, [
+      email,
+      new Date().toLocaleString('pt-BR')
+    ]);
 
     res.status(201).json({ success: true, message: 'Inscrição realizada com sucesso!' });
   } catch (error) {

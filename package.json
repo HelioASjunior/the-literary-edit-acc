@@ -29,6 +29,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "google-auth-library": "^10.6.2",
+    "googleapis": "^144.0.0",
     "google-spreadsheet": "^5.2.0",
     "nodemailer": "^8.0.5"
   }
