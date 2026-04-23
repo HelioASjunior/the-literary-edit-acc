@@ -8,6 +8,9 @@
  *
  * Ou gere apenas uma resenha específica:
  *   node gerar-paginas-resenhas.js minha-resenha
+ *
+ * Gerar a ultima resenha e enviar newsletter:
+ *   node gerar-paginas-resenhas.js --ultima --newsletter
  */
 
 const fs = require('fs');
@@ -43,14 +46,21 @@ try {
 }
 fs.unlinkSync(tmpFile);
 
-/* ── Filtro por slug (argumento opcional) ── */
-const slugAlvo = process.argv[2];
+/* ── Filtro por slug / flags (argumentos opcionais) ── */
+const args = process.argv.slice(2);
+const flagUltima = args.includes('--ultima') || args.includes('--latest');
+const flagNewsletter = args.includes('--newsletter') || args.includes('--enviar-newsletter');
+const slugArgumento = args.find(a => !a.startsWith('--'));
+const slugAlvo = slugArgumento || (flagUltima && RESENHAS[0] ? RESENHAS[0].slug : undefined);
 const lista = slugAlvo
   ? RESENHAS.filter(r => r.slug === slugAlvo)
   : RESENHAS;
 
 if (!lista.length) {
   console.error(`❌  Nenhuma resenha encontrada${slugAlvo ? ` com slug "${slugAlvo}"` : ''}.`);
+  const slugs = RESENHAS.map(r => r.slug).join(', ');
+  console.log(`\n📚 Slugs disponíveis: ${slugs}`);
+  console.log('💡 Dica: use --ultima para gerar a mais recente automaticamente.');
   process.exit(1);
 }
 
@@ -597,7 +607,12 @@ function gerarListaHTML(paginaNum, resenhasPagina, totalPaginas) {
 console.log('\n🩷  Páginas atualizadas com sucesso!');
 
 // Se gerou apenas UMA resenha específica, dispara a newsletter
-if (slugAlvo && lista.length === 1) {
+if ((slugAlvo && lista.length === 1) || flagNewsletter) {
+  if (lista.length !== 1) {
+    console.log('\n⚠️  Para enviar newsletter, gere apenas uma resenha (slug único ou --ultima).');
+    process.exit(1);
+  }
+
   const resenha = lista[0];
   console.log(`\n📢  Deseja enviar a newsletter para "${resenha.titulo}"?`);
   console.log(`    (Certifique-se de que o .env está configurado com GMAIL_USER e GMAIL_PASS)`);
@@ -612,6 +627,7 @@ if (slugAlvo && lista.length === 1) {
   }
 } else {
   console.log('\n💡 Dica: Para enviar a newsletter de uma resenha específica, use:');
-  console.log('   node gerar-paginas-resenhas.js <slug-da-resenha>');
+  console.log('   node gerar-paginas-resenhas.js <slug-da-resenha> --newsletter');
+  console.log('   node gerar-paginas-resenhas.js --ultima --newsletter');
 }
 

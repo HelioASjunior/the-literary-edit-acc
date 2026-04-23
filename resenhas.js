@@ -11,6 +11,45 @@
 
 window.RESENHAS = [
 
+{
+    slug: 'guerra-adoravel-guerra-resenha',
+    titulo: 'Guerra Adorável Guerra',
+    tituloResenha: 'O Amor sob o Olhar dos Deuses no Caos da Grande Guerra',
+    autora: 'Julie Berry',
+    genero: 'Ficção Histórica / Mitologia',
+    generoFiltro: 'romance historia mitologia drama',
+    paginas: '448',
+    publicado: '2024',
+    data: '2026-04-23',
+    dataFormatada: '23 de abril, 2026',
+    resumo: 'Uma narrativa sensível onde deuses gregos narram histórias de amor e resistência em meio aos campos de batalha da Primeira Guerra Mundial.',
+    spineColor: '#A62D2D',
+    faceGradient: 'linear-gradient(145deg, #f5e6d3, #d9c5b2)',
+    ornamento: '✦',
+    tags: ['Primeira Guerra', 'Mitologia Grega', 'Romance'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">Narrado pelos deuses gregos do Olimpo, <em>Guerra Adorável Guerra</em> apresenta uma perspectiva única e envolvente sobre a Primeira Guerra Mundial. Sob o olhar de Afrodite, Ares, Apolo e Hefesto, acompanhamos histórias de amor que surgem e resistem em meio ao caos, à dor e às incertezas da guerra.</p>
+      
+      <h2>A Interseção entre o Divino e o Humano</h2>
+      <p>Alternando entre o plano divino e a realidade dos soldados e civis, Julie Berry constrói uma narrativa sensível e profundamente humana, explorando não apenas o impacto do conflito, mas também as conexões que nascem mesmo nos cenários mais improváveis.</p>
+      
+      <blockquote class="review-blockquote">
+        "O que são os deuses sem as pessoas que os amam e os odeiam? Somos apenas histórias contadas ao vento."
+        <cite>— Julie Berry, <em>Guerra Adorável Guerra</em></cite>
+      </blockquote>
+
+      <p>Os personagens são atravessados por escolhas difíceis, perdas irreparáveis e sentimentos intensos, que evidenciam a fragilidade e, ao mesmo tempo, a força do amor.</p>
+
+      <div class="pull-quote-review">
+        <p>"Mesmo diante da destruição, o amor continua sendo uma das maiores forças capazes de dar sentido à experiência humana."</p>
+      </div>
+
+      <p>Com uma proposta original e uma escrita delicada, o livro mostra que a esperança e a conexão humana persistem, ainda que, muitas vezes, deixem cicatrizes profundas.</p>
+    `
+  },
+
   {
     slug: 'existir',                           // Nome do arquivo HTML (sem extensão)
     titulo: 'A Arte de Existir com Intenção',  // Título do livro
