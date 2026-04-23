@@ -1,130 +1,90 @@
-# Confraria Literária — Website Editorial
+# 📖 Confraria Literária — Website Editorial
 
-## Estrutura do Projeto
+![Versão](https://img.shields.io/badge/versão-2.0.0-crimson)
+![Status](https://img.shields.io/badge/status-produção-success)
+![Stack](https://img.shields.io/badge/stack-HTML%20%7C%20CSS%20%7C%20JS%20%7C%20Node.js-rose)
 
-```
-bookclub2/
-├── index.html              ← Página principal (homepage)
-├── resenhas.js             ← BANCO DE DADOS (Adicione novas resenhas aqui)
-├── gerar-paginas-resenhas.js ← SCRIPT GERADOR (Execute para criar as páginas)
-├── pages/
-│   ├── sobre.html          ← Página "Sobre mim"
-│   └── <slug>.html         ← Resenhas geradas automaticamente
-└── js/
-    ├── main.js             ← JS compartilhado
-    └── review.js           ← Sistema de corações e comentários
-
-## Como Adicionar uma Resenha
-1. Abra o arquivo `resenhas.js`.
-2. Adicione os dados do livro ao final do array.
-3. No terminal, execute: `node gerar-paginas-resenhas.js`.
-4. As páginas e a home serão atualizadas automaticamente!
-
-<form class="comment-form glass" id="commentForm" data-review="meulivro" ...>
-```
-
-O ID `data-review` precisa ser único para cada resenha. Ele é usado como chave no localStorage:
-- Avaliações: `rating_meulivro`
-- Comentários: `comments_meulivro`
-- Registro de quem já avaliou: `rated_meulivro`
-
-### 3. Adicione o card na homepage
-
-Em `index.html`, dentro de `.reviews-grid`, adicione:
-
-```html
-<article class="review-card glass reveal" data-genre="filosofia favoritos">
-  <a href="pages/resenha-meulivro.html" class="review-card__link">
-    <!-- ... cover e conteúdo ... -->
-  </a>
-</article>
-```
-
-O atributo `data-genre` define em quais filtros o card aparece. Valores possíveis:
-- `todos` (sempre aparece)
-- `favoritos` (estrela ⭑)
-- `filosofia`
-- `romance`
-- `autoconhecimento`
-- `literatura`
-- `ciencia`
+A **Confraria Literária** é uma plataforma editorial digital projetada para mulheres que buscam uma leitura profunda e reflexiva. O projeto une uma estética clássica de revista literária com funcionalidades modernas de interação e automação.
 
 ---
 
-## Sistema de Corações (Heart Rating)
+## 📸 Preview do Projeto
 
-- Cada resenha gerencia sua própria avaliação independentemente
-- Os dados ficam no `localStorage` do navegador
-- Um usuário só pode avaliar uma vez por resenha/dispositivo
-- A média e contagem são calculadas em tempo real
+*(Espaço para capturas de tela do site)*
 
-**Para resetar avaliações em desenvolvimento:**
-```javascript
-// No console do navegador:
-localStorage.removeItem('rating_existir')
-localStorage.removeItem('rated_existir')
-```
+- **Homepage Editorial**: Grid dinâmico de resenhas com filtros inteligentes.
+- **Leitura Atual**: Card interativo com progresso de leitura e notas pessoais.
+- **Páginas de Resenha**: Layout focado em legibilidade (Typography-first) com sistema de comentários globais.
 
 ---
 
-## Sistema de Comentários
+## ✨ Funcionalidades Principais
 
-- Cada resenha tem sua própria lista de comentários
-- Os comentários ficam no `localStorage` do navegador
-- Para um sistema real, substitua o `localStorage` por chamadas a uma API/backend
+### 🚀 Automação de Conteúdo
+- **Gerador Estático (SSG)**: Script Node.js que transforma dados de um banco JS em páginas HTML completas, otimizadas para SEO.
+- **Atualização Automática**: Ao adicionar uma resenha, a homepage, o arquivo e a paginação são reconstruídos instantaneamente.
 
-**Para resetar comentários em desenvolvimento:**
-```javascript
-localStorage.removeItem('comments_existir')
+### 💬 Comunidade e Interação
+- **Comentários Globais**: Integração com **Google Sheets API** funcionando como banco de dados em tempo real.
+- **Sistema de Avaliação (Hearts)**: Feedback visual interativo por resenha.
+
+### ✉️ Newsletter Automatizada
+- **Inscrição Serverless**: Rota de API no Vercel que valida e armazena e-mails na nuvem.
+- **Disparo Inteligente**: Ao publicar uma nova resenha, o sistema pode notificar automaticamente todos os inscritos com um e-mail personalizado.
+
+---
+
+## 🛠️ Stack Tecnológica
+
+- **Frontend**: HTML5 Semântico, Vanilla CSS3 (Custom Properties, Grid, Flexbox).
+- **Backend (Serverless)**: Node.js (Vercel Functions).
+- **Banco de Dados**: Google Sheets API (v4).
+- **Automação**: Scripting em Node.js para geração de páginas.
+- **Design**: Focado em Micro-interações e Scroll Reveal.
+
+---
+
+## 🎨 Design System
+
+O design foi inspirado em publicações de luxo e editoriais clássicos (como *The New Yorker* e *Vogue*).
+
+- **Tipografia**: 
+  - `Cormorant Garamond`: Elegância e tradição para títulos.
+  - `DM Sans`: Modernidade e clareza para leitura fluida.
+- **Paleta de Cores**: Tons de carmesim, rosa seco e off-white para transmitir sofisticação e suavidade.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```bash
+├── api/                    # Funções Serverless (Vercel)
+├── css/                    # Design System e Estilos
+├── js/                     # Lógica de Interação e APIs
+├── pages/                  # Páginas geradas dinamicamente
+├── resenhas.js             # 💿 Banco de Dados de Conteúdo
+├── gerar-paginas-resenhas.js # ⚙️ Motor de Geração do Site
+└── index.html              # Homepage Principal
 ```
 
 ---
 
-## Paleta de Cores
+## ⚙️ Configuração para Desenvolvedores
 
-| Token         | Hex       | Uso                          |
-|---------------|-----------|------------------------------|
-| `--crimson`   | `#8C0327` | Acentos principais, links    |
-| `--burgundy`  | `#A62454` | Gradientes, CTAs             |
-| `--rose`      | `#D95995` | Tags, ícones, corações       |
-| `--blush`     | `#F2A7D0` | Hover states, bordas suaves  |
-| `--petal`     | `#F2C9E4` | Fundos claros, highlights    |
-| `--terracotta`| `#E59888` | Capas de livros terracota    |
-| `--salmon`    | `#ECB1A5` | Variações quentes            |
-| `--cream`     | `#F9E5E0` | Backgrounds suaves           |
-| `--white`     | `#FFFFFD` | Fundo principal              |
+Se você deseja clonar e rodar este projeto, precisará configurar as variáveis de ambiente no arquivo `.env`:
 
----
-
-## Tipografia
-
-- **Cormorant Garamond** — Display serif editorial (títulos, citações, capas)
-- **DM Sans** — UI/body sans-serif (substituto premium de Glossier Sans/Aperçu)
-
----
-
-## Foto de Perfil
-
-Em `pages/sobre.html` e `index.html`, substitua o placeholder `<div class="profile-image-placeholder">` por:
-
-```html
-<img src="../imagens/foto-perfil.jpg" alt="Foto de perfil" 
-     style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />
+```env
+GMAIL_USER=seu-email@gmail.com
+GMAIL_PASS=sua-senha-de-app
+GOOGLE_SHEET_ID=id-da-sua-planilha
+GOOGLE_SERVICE_ACCOUNT_EMAIL=seu-email-da-conta-de-servico
+GOOGLE_PRIVATE_KEY=sua-chave-privada
 ```
 
 ---
 
-## Capas de Livros Reais
+## 📝 Licença
 
-As capas são geradas em CSS como livros estilizados. Para usar imagens reais, substitua o elemento `.book-cover` por:
+Este projeto foi desenvolvido como uma peça de portfólio para a **Confraria Literária**. Sinta-se à vontade para explorar o código e se inspirar!
 
-```html
-<div class="book-cover book-cover--featured">
-  <img src="../imagens/capa-livro.jpg" alt="Capa: Título do Livro" 
-       style="width:100%;height:100%;object-fit:cover;" />
-</div>
-```
-
----
-
-Projeto desenvolvido com HTML, CSS e JavaScript puro — sem dependências externas.
+Desenvolvido por **Hélio Jr.** para **Ana Carolina Craveiro** 🩷
