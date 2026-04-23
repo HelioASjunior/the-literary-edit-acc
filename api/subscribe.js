@@ -1,0 +1,48 @@
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { JWT } = require('google-auth-library');
+
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, message: 'Método não permitido.' });
+  }
+
+  const { email } = req.body;
+
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ success: false, message: 'E-mail inválido.' });
+  }
+
+  try {
+    // Autenticação com a Conta de Serviço
+    const serviceAccountAuth = new JWT({
+      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+    
+    // Carrega o documento
+    await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0]; // Primeira aba
+
+    // Verifica se já existe (opcional, para evitar duplicados na planilha)
+    const rows = await sheet.getRows();
+    const jaExiste = rows.some(row => row.get('Email') === email);
+
+    if (jaExiste) {
+      return res.status(200).json({ success: true, message: 'Você já está inscrito!' });
+    }
+
+    // Adiciona o novo e-mail e a data
+    await sheet.addRow({
+      Email: email,
+      Data: new Date().toLocaleString('pt-BR')
+    });
+
+    res.status(201).json({ success: true, message: 'Inscrição realizada com sucesso!' });
+  } catch (error) {
+    console.error('Erro no Google Sheets:', error);
+    res.status(500).json({ success: false, message: 'Erro ao conectar com o banco de dados.' });
+  }
+};

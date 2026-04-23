@@ -1,0 +1,5 @@
+node_modules/
+.env
+subscribers.json
+como_gerar_resenha.txt
+.DS_Store

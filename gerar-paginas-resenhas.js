@@ -12,6 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { enviarNewsletter } = require('./js/mailer.js');
 
 /* ── Carrega o arquivo de dados ── */
 const resenhasFile = path.join(__dirname, 'resenhas.js');
@@ -297,7 +298,9 @@ function gerarHTML(r) {
           </div>
           <div class="sf-col">
             <h4>Contato</h4>
-            <a href="#">contato@circuloliterario.com.br</a>
+            <a href="https://www.linkedin.com/in/ana-carolina-craveiro-250502403/" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com/carolinacraveirodaily" target="_blank">Instagram</a>
+            <a href="https://skoob.com.br/profile/695d5137d8551d03d7e8759c-carolinacraveiro" target="_blank">Skoob</a>
           </div>
         </div>
       </div>
@@ -307,6 +310,16 @@ function gerarHTML(r) {
       </div>
     </div>
   </footer>
+
+  <!-- Floating Socials -->
+  <div class="floating-socials visible">
+    <a href="https://www.instagram.com/carolinacraveirodaily" target="_blank" class="float-btn" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <a href="https://skoob.com.br/profile/695d5137d8551d03d7e8759c-carolinacraveiro" target="_blank" class="float-btn" aria-label="Skoob" title="Skoob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+    </a>
+  </div>
 
   <script src="../js/main.js"></script>
   <script src="../js/review.js"></script>
@@ -508,8 +521,39 @@ function gerarListaHTML(paginaNum, resenhasPagina, totalPaginas) {
       </div>
     </div>
   </footer>
+
+  <!-- Floating Socials -->
+  <div class="floating-socials visible">
+    <a href="https://www.instagram.com/carolinacraveirodaily" target="_blank" class="float-btn" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </a>
+    <a href="https://skoob.com.br/profile/695d5137d8551d03d7e8759c-carolinacraveiro" target="_blank" class="float-btn" aria-label="Skoob" title="Skoob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+    </a>
+  </div>
+  <script src="../js/main.js"></script>
 </body>
 </html>`;
 }
 
-console.log('\n🩷  Concluído! Abra o site no navegador para ver as páginas geradas.');
+console.log('\n🩷  Páginas atualizadas com sucesso!');
+
+// Se gerou apenas UMA resenha específica, dispara a newsletter
+if (slugAlvo && lista.length === 1) {
+  const resenha = lista[0];
+  console.log(`\n📢  Deseja enviar a newsletter para "${resenha.titulo}"?`);
+  console.log(`    (Certifique-se de que o .env está configurado com GMAIL_USER e GMAIL_PASS)`);
+  
+  // Como é um script CLI, vamos disparar automaticamente se o ENV estiver pronto
+  if (process.env.GMAIL_USER && process.env.GMAIL_PASS && process.env.GMAIL_PASS !== 'sua_senha_de_app_aqui') {
+    enviarNewsletter(resenha).catch(err => {
+      console.error('❌  Erro ao enviar newsletter:', err.message);
+    });
+  } else {
+    console.log('⏭️  Newsletter ignorada (credenciais não configuradas no .env).');
+  }
+} else {
+  console.log('\n💡 Dica: Para enviar a newsletter de uma resenha específica, use:');
+  console.log('   node gerar-paginas-resenhas.js <slug-da-resenha>');
+}
+

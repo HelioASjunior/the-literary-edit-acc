@@ -95,14 +95,35 @@ function handleNewsletter(e) {
   e.preventDefault();
   const btn = document.getElementById('nlBtnText');
   const success = document.getElementById('nlSuccess');
-  if (!btn) return;
+  const emailInput = e.target.querySelector('input[type="email"]');
 
-  btn.textContent = 'Inscrevendo...';
-  setTimeout(() => {
-    success.style.display = 'block';
-    btn.textContent = 'Quero receber';
-    e.target.reset();
-  }, 1000);
+  if (!btn || !emailInput) return;
+
+  const originalText = btn.textContent;
+  btn.textContent = 'Enviando...';
+
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: emailInput.value })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        success.style.display = 'block';
+        success.textContent = data.message;
+        e.target.reset();
+      } else {
+        alert('Erro: ' + data.message);
+      }
+    })
+    .catch(err => {
+      console.error('Erro na newsletter:', err);
+      alert('Não foi possível conectar ao servidor da newsletter. Verifique se o server.js está rodando.');
+    })
+    .finally(() => {
+      btn.textContent = originalText;
+    });
 }
 
 /* ── GLASS CARD CURSOR HIGHLIGHT ── */

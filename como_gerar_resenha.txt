@@ -92,15 +92,55 @@ o último objeto e cole o bloco abaixo, preenchendo todos os campos:
 PASSO 3 — Gerar a página HTML
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Abra o terminal na pasta bookclub2 e execute:
+Abra o terminal na pasta do projeto e execute:
 
-    node gerar-paginas-resenhas.js
+    node gerar-paginas-resenhas.js <slug>
 
-Isso gera (ou atualiza) os HTMLs de TODAS as resenhas do array.
+(Substitua <slug> pelo nome que você deu ao arquivo, ex: meu-novo-livro)
 
-Para gerar apenas a resenha com um slug específico:
+4. O sistema irá gerar a página e perguntar se deseja disparar a newsletter para os inscritos.
 
-    node gerar-paginas-resenhas.js nome-do-livro
+---
+
+### 📬 Sistema de Newsletter (Google Sheets + Vercel)
+
+Como o site está no Vercel, usamos uma **Planilha do Google** como banco de dados. Siga estes passos para configurar:
+
+#### PASSO 1: Criar a Planilha
+1. Crie uma nova Planilha no Google Sheets.
+2. Na primeira linha (cabeçalho), escreva:
+   - Coluna A: **Email**
+   - Coluna B: **Data**
+3. Copie o **ID da Planilha** da URL (é o código longo entre `/d/` e `/edit`).
+
+#### PASSO 2: Criar a Conta de Serviço (Google Cloud)
+1. Vá ao [Google Cloud Console](https://console.cloud.google.com/).
+2. Crie um novo projeto (ex: "Newsletter Confraria").
+3. Em "APIs e Serviços" > "Biblioteca", procure por **Google Sheets API** e ative-a.
+4. Em "IAM e Admin" > "Contas de Serviço", clique em **Criar Conta de Serviço**.
+5. Dê um nome, clique em "Criar e Continuar" e depois em "Concluído".
+6. Clique no e-mail da conta criada, vá na aba **Chaves** > **Adicionar Chave** > **Criar nova chave** > **JSON**.
+7. O download de um arquivo será feito. Abra-o e copie:
+   - `client_email`
+   - `private_key`
+
+#### PASSO 3: Compartilhar a Planilha
+1. Volte na sua Planilha do Google.
+2. Clique em **Compartilhar** e cole o e-mail da Conta de Serviço (`client_email`).
+3. Dê permissão de **Editor**.
+
+#### PASSO 4: Configurar o Vercel e o Local
+1. No seu computador, renomeie `.env.example` para `.env` e preencha os dados.
+2. No painel do Vercel, vá em **Settings** > **Environment Variables** e adicione as mesmas chaves lá:
+   - `GMAIL_USER`
+   - `GMAIL_PASS`
+   - `GOOGLE_SHEET_ID`
+   - `GOOGLE_SERVICE_ACCOUNT_EMAIL`
+   - `GOOGLE_PRIVATE_KEY` (certifique-se de colar a chave inteira, incluindo aspas se necessário).
+
+#### PASSO 5: Disparo Automático
+Sempre que você rodar `node gerar-paginas-resenhas.js <slug>`, o sistema buscará os e-mails na planilha e enviará a newsletter formatada.
+
 
 O arquivo será criado em:
 
