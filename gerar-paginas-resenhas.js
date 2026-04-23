@@ -120,6 +120,7 @@ function gerarHTML(r) {
   <header class="site-header" id="siteHeader">
     <div class="header__inner">
       <nav class="header__meta">
+        <a href="../index.html">Início</a>
         <a href="../pages/sobre.html">Sobre mim</a>
         <a href="../index.html#newsletter">Newsletter</a>
       </nav>
@@ -134,6 +135,7 @@ function gerarHTML(r) {
       </button>
     </div>
     <div class="mobile-nav" id="mobileNav">
+      <a href="../index.html">Início</a>
       <a href="../pages/sobre.html">Sobre mim</a>
       <a href="../index.html#resenhas">Resenhas</a>
       <a href="../index.html#favoritos">Favoritos</a>
@@ -470,6 +472,7 @@ function gerarListaHTML(paginaNum, resenhasPagina, totalPaginas) {
   <header class="site-header scrolled" style="background: rgba(255,253,253,.98);">
     <div class="header__inner">
       <nav class="header__meta">
+        <a href="../index.html">Início</a>
         <a href="sobre.html">Sobre mim</a>
         <a href="../index.html#newsletter">Newsletter</a>
       </nav>
