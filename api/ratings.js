@@ -2,17 +2,29 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
 module.exports = async (req, res) => {
-  const { reviewId } = req.query;
-
-  const serviceAccountAuth = new JWT({
-    email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-  });
-
-  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
-
   try {
+    const { reviewId } = req.query || {};
+    const missingVars = [
+      'GOOGLE_SERVICE_ACCOUNT_EMAIL',
+      'GOOGLE_PRIVATE_KEY',
+      'GOOGLE_SHEET_ID'
+    ].filter((key) => !process.env[key]);
+
+    if (missingVars.length) {
+      return res.status(500).json({
+        success: false,
+        message: `Configuração ausente: ${missingVars.join(', ')}`
+      });
+    }
+
+    const serviceAccountAuth = new JWT({
+      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+
     await doc.loadInfo();
     let sheet = doc.sheetsByTitle['Avaliacoes'];
     if (!sheet) {
@@ -40,7 +52,8 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'POST') {
-      const { nota, reviewId: postReviewId } = req.body;
+      const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+      const { nota, reviewId: postReviewId } = body;
       if (!nota || !postReviewId) {
         return res.status(400).json({ success: false, message: 'Campos incompletos.' });
       }

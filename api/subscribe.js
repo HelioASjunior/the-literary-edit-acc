@@ -2,21 +2,35 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
 module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, message: 'Método não permitido.' });
-  }
-
-  const { email } = req.body;
-
-  if (!email || !email.includes('@')) {
-    return res.status(400).json({ success: false, message: 'E-mail inválido.' });
-  }
-
   try {
+    if (req.method !== 'POST') {
+      return res.status(405).json({ success: false, message: 'Método não permitido.' });
+    }
+
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+    const email = String(body.email || '').trim();
+
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ success: false, message: 'E-mail inválido.' });
+    }
+
+    const missingVars = [
+      'GOOGLE_SERVICE_ACCOUNT_EMAIL',
+      'GOOGLE_PRIVATE_KEY',
+      'GOOGLE_SHEET_ID'
+    ].filter((key) => !process.env[key]);
+
+    if (missingVars.length) {
+      return res.status(500).json({
+        success: false,
+        message: `Configuração ausente: ${missingVars.join(', ')}`
+      });
+    }
+
     // Autenticação com a Conta de Serviço
     const serviceAccountAuth = new JWT({
       email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
@@ -42,7 +56,7 @@ module.exports = async (req, res) => {
 
     res.status(201).json({ success: true, message: 'Inscrição realizada com sucesso!' });
   } catch (error) {
-    console.error('Erro no Google Sheets:', error);
+    console.error('Erro no Google Sheets (subscribe):', error);
     res.status(500).json({ success: false, message: 'Erro ao conectar com o banco de dados.' });
   }
 };
