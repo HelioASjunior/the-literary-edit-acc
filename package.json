@@ -4,6 +4,8 @@
   "description": "``` bookclub2/ ├── index.html              ← Página principal (homepage) ├── css/ │   ├── style.css           ← Design system completo (tokens, componentes, layout) │   └── review.css          ← Estilos específicos para páginas de resenha ├── js/ │   ├── main.js             ← JS compartilhado (nav, reveal, filtros, newsletter) │   └── review.js           ← Sistema de corações e comentários (por resenha) └── pages/     ├── sobre.html                  ← Página \"Sobre mim\"     ├── resenha-existir.html        ← Resenha completa (modelo principal)     ├── resenha-beloved.html        ← Resenha completa     ├── resenha-corpo.html          ← Stub (aguardando conteúdo)     ├── resenha-clarice.html        ← Stub (aguardando conteúdo)     ├── resenha-simone.html         ← Stub (aguardando conteúdo)     └── resenha-mulher.html         ← Stub (aguardando conteúdo) ```",
   "main": "gerar-paginas-resenhas.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
