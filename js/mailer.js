@@ -83,7 +83,7 @@ async function enviarNewsletter(resenha) {
           <div class="book-meta">${resenha.titulo} — ${resenha.autora}</div>
           <p class="excerpt">${resenha.resumo}</p>
           <div style="text-align: center; margin-top: 40px;">
-            <a href="https://vossa-url.com/pages/${resenha.slug}.html" class="btn">Ler resenha completa</a>
+            <a href="https://confrarialiteraria.vercel.app/pages/${resenha.slug}.html" class="btn">Ler resenha completa</a>
           </div>
         </div>
         <div class="footer">
