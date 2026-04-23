@@ -642,6 +642,7 @@ h4 {
   padding: 100px var(--pad-x);
   background: linear-gradient(180deg, #fdf5f7 0%, var(--white) 100%);
   overflow: hidden;
+  position: relative;
 }
 
 .leitura-atual__inner {
@@ -830,6 +831,26 @@ h4 {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.big-book__cover-watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.big-book__cover-watermark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bbc__top {
