@@ -87,4 +87,4 @@ GOOGLE_PRIVATE_KEY=sua-chave-privada
 
 Este projeto foi desenvolvido como uma peça de portfólio para a **Confraria Literária**. Sinta-se à vontade para explorar o código e se inspirar!
 
-Desenvolvido por **Hélio Jr.** para **Ana Carolina Craveiro** 🩷
+Desenvolvido por **Hélio Jr.** para **Ana Carolina Craveiro** 
