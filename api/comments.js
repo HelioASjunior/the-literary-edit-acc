@@ -70,6 +70,10 @@ module.exports = async (req, res) => {
     return res.status(405).json({ success: false, message: 'Método não permitido.' });
   } catch (error) {
     console.error('Erro nos comentários:', error);
-    res.status(500).json({ success: false, message: 'Erro ao processar comentários.' });
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao processar comentários.',
+      details: String(error && error.message ? error.message : 'Erro desconhecido').slice(0, 240)
+    });
   }
 };

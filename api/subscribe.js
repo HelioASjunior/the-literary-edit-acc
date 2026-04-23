@@ -57,6 +57,10 @@ module.exports = async (req, res) => {
     res.status(201).json({ success: true, message: 'Inscrição realizada com sucesso!' });
   } catch (error) {
     console.error('Erro no Google Sheets (subscribe):', error);
-    res.status(500).json({ success: false, message: 'Erro ao conectar com o banco de dados.' });
+    res.status(500).json({
+      success: false,
+      message: 'Erro ao conectar com o banco de dados.',
+      details: String(error && error.message ? error.message : 'Erro desconhecido').slice(0, 240)
+    });
   }
 };
