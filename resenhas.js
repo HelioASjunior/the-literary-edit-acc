@@ -27,8 +27,8 @@ window.RESENHAS = [
     faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
     ornamento: '★',
     tags: ['Filosofia', 'Autoconhecimento', 'Estoicismo', 'Favorita'],
-    notaMedia: '4.7',
-    notaContagem: '38 avaliações',
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
     conteudo: `
       <p class="lead-paragraph">
         Elena Marchetti escreve como quem entende que a filosofia não precisa de pedestais.
@@ -124,8 +124,8 @@ window.RESENHAS = [
     faceGradient: 'linear-gradient(145deg,#fdf0eb,#f2cbc2)',
     ornamento: '★',
     tags: ['Ciência', 'Psicologia', 'Trauma'],
-    notaMedia: '4.5',
-    notaContagem: '22 avaliações',
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
     conteudo: `
       <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
         <div style="position:relative;z-index:1;padding:2rem;">
@@ -154,8 +154,8 @@ window.RESENHAS = [
     faceGradient: 'linear-gradient(145deg,#fdf8f3,#f5e0d0)',
     ornamento: '★',
     tags: ['Literatura Brasileira', 'Existencialismo'],
-    notaMedia: '5.0',
-    notaContagem: '50 avaliações',
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
     conteudo: `
       <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
         <div style="position:relative;z-index:1;padding:2rem;">
@@ -184,8 +184,8 @@ window.RESENHAS = [
     faceGradient: 'linear-gradient(145deg,#fceef5,#ecc8dc)',
     ornamento: '★',
     tags: ['Filosofia', 'Feminismo'],
-    notaMedia: '4.8',
-    notaContagem: '45 avaliações',
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
     conteudo: `
       <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
         <div style="position:relative;z-index:1;padding:2rem;">
@@ -214,8 +214,8 @@ window.RESENHAS = [
     faceGradient: 'linear-gradient(145deg,#fdf5f0,#f2cbc2)',
     ornamento: '★',
     tags: ['Psicologia', 'Autoconhecimento'],
-    notaMedia: '5.0',
-    notaContagem: '80 avaliações',
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
     conteudo: `
       <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
         <div style="position:relative;z-index:1;padding:2rem;">

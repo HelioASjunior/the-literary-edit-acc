@@ -17,46 +17,85 @@
   const RATED_KEY = `rated_${REVIEW_ID}`;
 
   /* ============================================================
-     HEART RATING SYSTEM (Mantido Local por enquanto)
+     HEART RATING SYSTEM (GLOBAL VIA API)
      ============================================================ */
   (function initRating() {
     const widget = document.getElementById('heartsInteractive');
     const label = document.getElementById('heartsLabel');
+    
+    // Bottom summary elements
     const rrBar = document.getElementById('rrBar');
     const rrAvg = document.getElementById('rrAvg');
     const rrCount = document.getElementById('rrCount');
+
+    // Top summary elements (if they exist)
+    const rsHeartsTop = document.getElementById('rsHeartsTop');
+    const rsAvgTop = document.getElementById('rsAvgTop');
+    const rsCountTop = document.getElementById('rsCountTop');
+
     if (!widget) return;
 
     const hearts = widget.querySelectorAll('.hi-heart');
     const hasRated = localStorage.getItem(RATED_KEY);
 
-    function getRatingData() {
-      try { return JSON.parse(localStorage.getItem(RATING_KEY)) || { total: 170, count: 36 }; }
-      catch { return { total: 170, count: 36 }; }
+    async function fetchRatingData() {
+      try {
+        const response = await fetch(`/api/ratings?reviewId=${REVIEW_ID}`);
+        const data = await response.json();
+        return { average: data.average || 0, count: data.count || 0 };
+      } catch (err) {
+        console.error('Erro ao carregar avaliações:', err);
+        return { average: 0, count: 0 };
+      }
     }
 
-    function renderResult() {
-      const data = getRatingData();
-      const avg = data.count > 0 ? (data.total / data.count) : 0;
+    function updateSummaryUI(avg, count) {
       const pct = (avg / 5) * 100;
+      const countText = `${count} avaliação${count !== 1 ? 'ões' : ''}`;
+      
+      // Update Bottom
       if (rrBar) rrBar.style.width = pct + '%';
-      if (rrAvg) rrAvg.textContent = avg.toFixed(1);
-      if (rrCount) rrCount.textContent = `${data.count} avaliação${data.count !== 1 ? 'ões' : ''}`;
+      if (rrAvg) rrAvg.textContent = avg > 0 ? avg.toFixed(1) : '—';
+      if (rrCount) rrCount.textContent = count > 0 ? countText : 'Seja a primeira a avaliar';
+
+      // Update Top (if exists)
+      if (rsAvgTop) rsAvgTop.textContent = avg > 0 ? avg.toFixed(1) : '—';
+      if (rsCountTop) rsCountTop.textContent = count > 0 ? countText : 'Sem avaliações';
+      if (rsHeartsTop) {
+        const estrelas = [1, 2, 3, 4, 5].map(n => {
+          const opacity = avg === 0 ? '0.3' : (n <= Math.round(avg) ? '1' : '0.3');
+          return `<span style="opacity:${opacity}">🩷</span>`;
+        }).join('');
+        rsHeartsTop.innerHTML = estrelas;
+      }
+    }
+
+    async function renderResult() {
+      const data = await fetchRatingData();
+      updateSummaryUI(data.average, data.count);
     }
     renderResult();
 
     if (hasRated) {
       const myRating = parseInt(hasRated);
-      hearts.forEach((h, i) => {
-        h.classList.toggle('rated', i < myRating);
-        h.style.opacity = i < myRating ? '1' : '0.2';
-      });
+      applyRatedStyle(myRating);
       if (label) label.textContent = `Você avaliou com ${myRating} coração${myRating !== 1 ? 'ões' : ''}`;
       return;
     }
 
+    function applyRatedStyle(value) {
+      hearts.forEach((h, i) => {
+        h.classList.toggle('rated', i < value);
+        h.style.opacity = i < value ? '1' : '0.2';
+      });
+    }
+
     hearts.forEach((heart, idx) => {
       heart.addEventListener('mouseenter', () => {
+        if (localStorage.getItem(RATED_KEY)) {
+          if (label) label.textContent = 'Você já avaliou esta resenha';
+          return;
+        }
         hearts.forEach((h, i) => {
           h.classList.toggle('hovered', i <= idx);
           h.style.opacity = i <= idx ? '1' : '0.2';
@@ -70,28 +109,54 @@
     });
 
     widget.addEventListener('mouseleave', () => {
+      if (localStorage.getItem(RATED_KEY)) return;
       hearts.forEach(h => { h.classList.remove('hovered'); h.style.opacity = '0.25'; });
       if (label) { label.textContent = 'Passe o mouse para avaliar'; label.style.color = ''; }
     });
 
     hearts.forEach((heart, idx) => {
-      heart.addEventListener('click', () => {
+      heart.addEventListener('click', async () => {
+        if (localStorage.getItem(RATED_KEY)) {
+          if (window.showToast) {
+            window.showToast('Você já avaliou esta resenha. Obrigada pelo carinho!', 'info');
+          }
+          return;
+        }
+        
         const value = idx + 1;
-        const data = getRatingData();
-        data.total += value;
-        data.count += 1;
-        localStorage.setItem(RATING_KEY, JSON.stringify(data));
         localStorage.setItem(RATED_KEY, String(value));
+        applyRatedStyle(value);
 
-        hearts.forEach((h, i) => {
-          h.classList.toggle('rated', i < value);
-          h.style.opacity = i < value ? '1' : '0.2';
-        });
         if (label) {
-          label.textContent = `Obrigada! Você avaliou com ${value} coração${value !== 1 ? 'ões' : ''}`;
+          label.textContent = `Obrigada! Registrando sua nota...`;
           label.style.color = 'var(--crimson)';
         }
-        setTimeout(renderResult, 300);
+
+        // Optimistic UI Update: Calculate new local state for immediate sync
+        const currentData = await fetchRatingData();
+        const newCount = currentData.count + 1;
+        const newTotal = (currentData.average * currentData.count) + value;
+        const newAvg = newTotal / newCount;
+        
+        // Update both boxes immediately
+        updateSummaryUI(newAvg, newCount);
+
+        try {
+          const response = await fetch('/api/ratings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nota: value, reviewId: REVIEW_ID })
+          });
+
+          if (response.ok) {
+            if (label) label.textContent = `Obrigada! Você avaliou com ${value} coração${value !== 1 ? 'ões' : ''}`;
+            // Optional: refresh again to get official server state if needed, 
+            // but we already updated optimistically.
+            await renderResult();
+          }
+        } catch (err) {
+          console.error('Erro ao salvar avaliação:', err);
+        }
       });
     });
   })();

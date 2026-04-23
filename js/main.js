@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    Confraria Literária — main.js
    Shared JS: nav, scroll reveal, progress bar, filters,
    newsletter, hamburger menu, hero date auto-update
@@ -119,7 +119,7 @@ function handleNewsletter(e) {
     })
     .catch(err => {
       console.error('Erro na newsletter:', err);
-      alert('Não foi possível conectar ao servidor da newsletter. Verifique se o server.js está rodando.');
+      alert('Não foi possível conectar ao servidor da newsletter.');
     })
     .finally(() => {
       btn.textContent = originalText;
@@ -186,3 +186,36 @@ window.addEventListener('load', () => {
 
   el.textContent = `${mes} · ${ano}`;
 })();
+
+/* ── TOAST NOTIFICATION SYSTEM ── */
+window.showToast = function(message, type = 'info') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast--${type}`;
+  
+  const icon = type === 'success' ? '✨' : type === 'error' ? '⚠️' : '🩷';
+  
+  toast.innerHTML = `
+    <span class="toast-icon">${icon}</span>
+    <span class="toast-message">${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  // Animate in
+  requestAnimationFrame(() => {
+    toast.classList.add('visible');
+  });
+
+  // Remove after 4s
+  setTimeout(() => {
+    toast.classList.remove('visible');
+    setTimeout(() => toast.remove(), 500);
+  }, 4000);
+};

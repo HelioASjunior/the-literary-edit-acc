@@ -1,5 +1,5 @@
-/* ============================================================
-   Confraria Literária — Design System CSS
+﻿/* ============================================================
+   Confraria LiterÃ¡ria â€” Design System CSS
    Palette:
      Crimson   #8C0327  |  Burgundy  #A62454  |  Rose     #D95995
      Blush     #F2A7D0  |  Petal     #F2C9E4
@@ -7,7 +7,7 @@
      Cream     #F9E5E0  |  White    #FFFFFD
    ============================================================ */
 
-/* ── TOKENS ── */
+/* â”€â”€ TOKENS â”€â”€ */
 :root {
   /* Brand palette */
   --crimson: #8C0327;
@@ -27,7 +27,7 @@
   --ink-soft: #7a3850;
   --ink-muted: #b07a8a;
 
-  /* Typography — DM Sans as body/UI ("Glossier Sans" spiritual twin)
+  /* Typography â€” DM Sans as body/UI ("Glossier Sans" spiritual twin)
      Cormorant Garamond as editorial serif display */
   --font-ui: 'DM Sans', 'Helvetica Neue', sans-serif;
   --font-display: 'Cormorant Garamond', 'Georgia', serif;
@@ -59,7 +59,7 @@
   --pad-x: 48px;
 }
 
-/* ── RESET ── */
+/* â”€â”€ RESET â”€â”€ */
 *,
 *::before,
 *::after {
@@ -101,7 +101,7 @@ img {
   display: block;
 }
 
-/* ── PROGRESS BAR ── */
+/* â”€â”€ PROGRESS BAR â”€â”€ */
 .progress-bar {
   position: fixed;
   top: 0;
@@ -115,7 +115,7 @@ img {
   pointer-events: none;
 }
 
-/* ── TYPOGRAPHY HELPERS ── */
+/* â”€â”€ TYPOGRAPHY HELPERS â”€â”€ */
 h1,
 h2,
 h3,
@@ -142,7 +142,7 @@ h4 {
   color: var(--blush);
 }
 
-/* ── UTILITY ── */
+/* â”€â”€ UTILITY â”€â”€ */
 .dot {
   width: 6px;
   height: 6px;
@@ -209,7 +209,7 @@ h4 {
   transform: translateY(-2px);
 }
 
-/* ── REVEAL ANIMATIONS ── */
+/* â”€â”€ REVEAL ANIMATIONS â”€â”€ */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -233,7 +233,7 @@ h4 {
   transition-delay: .36s;
 }
 
-/* ── BLOB DECORATIONS ── */
+/* â”€â”€ BLOB DECORATIONS â”€â”€ */
 .blob {
   position: absolute;
   border-radius: 50%;
@@ -258,7 +258,7 @@ h4 {
   }
 }
 
-/* ── BOOK COVER COMPONENT ── */
+/* â”€â”€ BOOK COVER COMPONENT â”€â”€ */
 .book-cover {
   display: flex;
   overflow: hidden;
@@ -443,7 +443,7 @@ h4 {
 }
 
 /* ============================================================
-   HERO EDITORIAL — homepage masthead
+   HERO EDITORIAL â€” homepage masthead
    ============================================================ */
 .hero-editorial {
   padding: 160px var(--pad-x) 80px;
@@ -463,7 +463,7 @@ h4 {
   background: url('../marca.png') no-repeat center center;
   background-size: cover;
   opacity: 0.19;
-  /* Aumente este valor (ex: 0.2, 0.3) para ficar mais visível, ou diminua (ex: 0.05) para ficar mais transparente */
+  /* Aumente este valor (ex: 0.2, 0.3) para ficar mais visÃ­vel, ou diminua (ex: 0.05) para ficar mais transparente */
   pointer-events: none;
   z-index: 0;
 }
@@ -532,7 +532,7 @@ h4 {
 }
 
 /* ============================================================
-   ÚLTIMA RESENHA
+   ÃšLTIMA RESENHA
    ============================================================ */
 .ultima-resenha {
   padding: 100px var(--pad-x);
@@ -984,7 +984,7 @@ h4 {
 }
 
 /* ============================================================
-   RESENHAS — filterable grid
+   RESENHAS â€” filterable grid
    ============================================================ */
 .resenhas-section {
   padding: 100px var(--pad-x);
@@ -1180,7 +1180,7 @@ h4 {
 }
 
 /* ============================================================
-   FAVORITOS DO MÊS — dark editorial section
+   FAVORITOS DO MÃŠS â€” dark editorial section
    ============================================================ */
 .favoritos-mes {
   padding: 100px var(--pad-x);
@@ -1308,7 +1308,7 @@ h4 {
 }
 
 /* ============================================================
-   SOBRE PREVIEW — homepage teaser
+   SOBRE PREVIEW â€” homepage teaser
    ============================================================ */
 .sobre-preview {
   padding: 100px var(--pad-x);
@@ -1995,4 +1995,50 @@ h4 {
 .float-btn svg {
   width: 22px;
   height: 22px;
+}
+
+/* ── TOAST NOTIFICATION ── */
+.toast-container {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  padding: 14px 24px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 400;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s var(--ease), opacity 0.5s ease;
+  pointer-events: auto;
+}
+
+.toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast--info { border-left: 4px solid var(--rose); }
+.toast--success { border-left: 4px solid #4CAF50; }
+.toast--error { border-left: 4px solid var(--crimson); }
+
+.toast-icon {
+  font-size: 1.1rem;
 }

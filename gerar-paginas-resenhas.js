@@ -81,20 +81,18 @@ function gerarHTML(r) {
   // Estrelas de avaliação no hero
   const notaNum = parseFloat(r.notaMedia);
   const estrelas = [1, 2, 3, 4, 5].map(n => {
-    const opacity = isNaN(notaNum) ? '0.3' : (n <= Math.round(notaNum) ? '1' : '0.3');
+    const opacity = isNaN(notaNum) ? '0.2' : (n <= Math.round(notaNum) ? '1' : '0.2');
     return `<span style="opacity:${opacity}">🩷</span>`;
   }).join('');
 
-  const ratingHeroHTML = r.notaMedia
-    ? `
+  const ratingHeroHTML = `
           <div class="rating-summary glass">
-            <div class="rs-hearts">${estrelas}</div>
+            <div class="rs-hearts" id="rsHeartsTop">${estrelas}</div>
             <div class="rs-numbers">
-              <span class="rs-avg">${r.notaMedia}</span>
-              <span class="rs-count">${r.notaContagem}</span>
+              <span class="rs-avg" id="rsAvgTop">${r.notaMedia || '—'}</span>
+              <span class="rs-count" id="rsCountTop">${r.notaContagem || 'Sem avaliações'}</span>
             </div>
-          </div>`
-    : '';
+          </div>`;
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
