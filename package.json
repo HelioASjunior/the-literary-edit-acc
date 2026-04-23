@@ -15,6 +15,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/HelioASjunior/the-literary-edit-acc/issues"
