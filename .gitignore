@@ -2,4 +2,5 @@ node_modules/
 .env
 subscribers.json
 como_gerar_resenha.txt
+configurar_planilhas.txt
 .DS_Store
