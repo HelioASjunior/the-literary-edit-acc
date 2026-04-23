@@ -1,4 +1,4 @@
-# Círculo Literário — Website Editorial
+# Confraria Literária — Website Editorial
 
 ## Estrutura do Projeto
 

@@ -1,5 +1,5 @@
 /* ============================================================
-   CÍRCULO LITERÁRIO — review.js
+   Confraria Literária — review.js
    
    Heart Rating System:
    - Each review page has a unique data-review ID on #heartsInteractive
@@ -18,26 +18,26 @@
 (function () {
   /* ── Determine review ID from the form element ── */
   const heartWidget = document.getElementById('heartsInteractive');
-  const commentForm  = document.getElementById('commentForm');
-  const REVIEW_ID    = (heartWidget || commentForm)?.dataset.review || 'unknown';
+  const commentForm = document.getElementById('commentForm');
+  const REVIEW_ID = (heartWidget || commentForm)?.dataset.review || 'unknown';
 
-  const RATING_KEY  = `rating_${REVIEW_ID}`;
-  const RATED_KEY   = `rated_${REVIEW_ID}`;
+  const RATING_KEY = `rating_${REVIEW_ID}`;
+  const RATED_KEY = `rated_${REVIEW_ID}`;
   const COMMENT_KEY = `comments_${REVIEW_ID}`;
 
   /* ============================================================
      HEART RATING SYSTEM
      ============================================================ */
   (function initRating() {
-    const widget  = document.getElementById('heartsInteractive');
-    const label   = document.getElementById('heartsLabel');
-    const rrBar   = document.getElementById('rrBar');
-    const rrAvg   = document.getElementById('rrAvg');
+    const widget = document.getElementById('heartsInteractive');
+    const label = document.getElementById('heartsLabel');
+    const rrBar = document.getElementById('rrBar');
+    const rrAvg = document.getElementById('rrAvg');
     const rrCount = document.getElementById('rrCount');
     if (!widget) return;
 
-    const hearts     = widget.querySelectorAll('.hi-heart');
-    const hasRated   = localStorage.getItem(RATED_KEY);
+    const hearts = widget.querySelectorAll('.hi-heart');
+    const hasRated = localStorage.getItem(RATED_KEY);
 
     /* Load existing aggregate data */
     function getRatingData() {
@@ -48,11 +48,11 @@
     /* Render the aggregate result display */
     function renderResult() {
       const data = getRatingData();
-      const avg  = data.count > 0 ? (data.total / data.count) : 0;
-      const pct  = (avg / 5) * 100;
+      const avg = data.count > 0 ? (data.total / data.count) : 0;
+      const pct = (avg / 5) * 100;
 
-      if (rrBar)   rrBar.style.width   = pct + '%';
-      if (rrAvg)   rrAvg.textContent   = avg.toFixed(1);
+      if (rrBar) rrBar.style.width = pct + '%';
+      if (rrAvg) rrAvg.textContent = avg.toFixed(1);
       if (rrCount) rrCount.textContent = `${data.count} avaliação${data.count !== 1 ? 'ões' : ''}`;
     }
     renderResult();
@@ -120,8 +120,8 @@
      COMMENTS SYSTEM
      ============================================================ */
   (function initComments() {
-    const list  = document.getElementById('commentsList');
-    const form  = document.getElementById('commentForm');
+    const list = document.getElementById('commentsList');
+    const form = document.getElementById('commentForm');
     const count = document.getElementById('commentsCount');
     if (!list || !form) return;
 
@@ -178,7 +178,7 @@
       e.preventDefault();
       const nameEl = document.getElementById('commentName');
       const textEl = document.getElementById('commentText');
-      const btnEl  = document.getElementById('cfBtnText');
+      const btnEl = document.getElementById('cfBtnText');
       if (!nameEl || !textEl) return;
 
       const name = nameEl.value.trim();
@@ -205,7 +205,7 @@
 
   /* ── Escape HTML to prevent XSS ── */
   function escapeHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-              .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 })();

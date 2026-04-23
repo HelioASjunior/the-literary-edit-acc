@@ -1,5 +1,5 @@
 ╔══════════════════════════════════════════════════════════════════════╗
-║         CÍRCULO LITERÁRIO — Como Criar uma Nova Resenha             ║
+║         Confraria Literária — Como Criar uma Nova Resenha             ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
 Este guia explica como publicar uma nova resenha no site usando o

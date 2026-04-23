@@ -1,5 +1,5 @@
 /**
- * CÍRCULO LITERÁRIO — Gerador de Páginas de Resenhas
+ * Confraria Literária — Gerador de Páginas de Resenhas
  * =====================================================
  * Como usar:
  *   1. Adicione a resenha no arquivo resenhas.js
@@ -10,7 +10,7 @@
  *   node gerar-paginas-resenhas.js minha-resenha
  */
 
-const fs   = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 /* ── Carrega o arquivo de dados ── */
@@ -44,7 +44,7 @@ fs.unlinkSync(tmpFile);
 
 /* ── Filtro por slug (argumento opcional) ── */
 const slugAlvo = process.argv[2];
-const lista    = slugAlvo
+const lista = slugAlvo
   ? RESENHAS.filter(r => r.slug === slugAlvo)
   : RESENHAS;
 
@@ -101,7 +101,7 @@ function gerarHTML(r) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${r.titulo} · Resenha — Círculo Literário</title>
+  <title>${r.titulo} · Resenha — Confraria Literária</title>
   <meta name="description" content="${r.resumo}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -123,7 +123,7 @@ function gerarHTML(r) {
         <a href="../pages/sobre.html">Sobre mim</a>
         <a href="../index.html#newsletter">Newsletter</a>
       </nav>
-      <a href="../index.html" class="site-logo">Círculo<em>Literário</em></a>
+      <a href="../index.html" class="site-logo">Confraria<em>Literária</em></a>
       <nav class="header__nav">
         <a href="../index.html#leitura-atual">Leitura Atual</a>
         <a href="../index.html#resenhas">Resenhas</a>
@@ -183,7 +183,7 @@ function gerarHTML(r) {
             ${r.tituloResenha}
           </h1>
           <div class="review-hero__byline">
-            <span>Por <strong>Círculo Literário</strong></span>
+            <span>Por <strong>Confraria Literária</strong></span>
             <span class="byline-sep">·</span>
             <span>${r.dataFormatada}</span>
           </div>
@@ -283,7 +283,7 @@ function gerarHTML(r) {
     <div class="site-footer__inner">
       <div class="sf-top">
         <div class="sf-brand">
-          <div class="sf-logo">Círculo<em>Literário</em></div>
+          <div class="sf-logo">Confraria<em>Literária</em></div>
           <p>Um espaço editorial para mulheres que lêem com profundidade.</p>
         </div>
         <div class="sf-links">
@@ -317,9 +317,9 @@ function gerarHTML(r) {
 const pagesDir = path.join(__dirname, 'pages');
 
 lista.forEach(r => {
-  const html     = gerarHTML(r);
-  const destino  = path.join(pagesDir, `${r.slug}.html`);
-  const existe   = fs.existsSync(destino);
+  const html = gerarHTML(r);
+  const destino = path.join(pagesDir, `${r.slug}.html`);
+  const existe = fs.existsSync(destino);
 
   fs.writeFileSync(destino, html, 'utf8');
 
@@ -333,7 +333,8 @@ if (fs.existsSync(indexPath) && !slugAlvo) { // Só atualiza o index se estiver 
   console.log('\n🔄  Atualizando cards na homepage (index.html)...');
   let indexHTML = fs.readFileSync(indexPath, 'utf8');
 
-  const cardsHTML = RESENHAS.map((r, index) => {
+  // Limite de 6 na página inicial
+  const cardsHTML = RESENHAS.slice(0, 6).map((r, index) => {
     // Calcula as estrelas do card
     const notaNum = parseFloat(r.notaMedia);
     const estrelas = [1, 2, 3, 4, 5].map(n => {
@@ -343,15 +344,12 @@ if (fs.existsSync(indexPath) && !slugAlvo) { // Só atualiza o index se estiver 
 
     // Estrela de favorita
     const favHTML = r.generoFiltro.includes('favoritos') ? '\n                <span class="rc-fav" title="Favorita">⭑</span>' : '';
-    
+
     // Classes de animação com delay (0, 1, 2, 0, 1, 2...)
     const delays = ['', ' reveal--delay', ' reveal--delay-2'];
     const delayClass = delays[index % 3];
-    
-    // Pega o título curto se o título for muito longo para a lombada (podemos usar o próprio título)
-    // Se quiser abreviar, pode-se fazer aqui. Mas vamos usar r.titulo.
-    
-    // Nome do gênero principal (antes do ponto, se houver)
+
+    // Nome do gênero principal
     const generoPrincipal = r.genero.split('·')[0].trim();
 
     return `
@@ -383,16 +381,132 @@ if (fs.existsSync(indexPath) && !slugAlvo) { // Só atualiza o index se estiver 
         </article>`;
   }).join('\n');
 
-  // Regex para substituir tudo entre <div class="reviews-grid" id="reviewsGrid"> e </div><!-- /reviews-grid -->
   const regex = /(<div class="reviews-grid" id="reviewsGrid">\s*)([\s\S]*?)(\s*<\/div><!-- \/reviews-grid -->)/;
-  
+
   if (regex.test(indexHTML)) {
     indexHTML = indexHTML.replace(regex, `$1${cardsHTML}$3`);
     fs.writeFileSync(indexPath, indexHTML, 'utf8');
-    console.log('✅  Homepage atualizada com sucesso!');
+    console.log('✅  Homepage atualizada com sucesso (últimas 6 resenhas)!');
   } else {
     console.warn('⚠️  Aviso: Não foi possível encontrar a div reviewsGrid no index.html para atualizar.');
   }
+
+  // ── GERA AS PÁGINAS DE ARQUIVO (PAGINAÇÃO) ──
+  console.log('\n🔄  Gerando páginas do arquivo (todas as resenhas)...');
+  const ITENS_POR_PAGINA = 6;
+  const totalPaginas = Math.ceil(RESENHAS.length / ITENS_POR_PAGINA);
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    const inicio = (i - 1) * ITENS_POR_PAGINA;
+    const fim = inicio + ITENS_POR_PAGINA;
+    const resenhasPagina = RESENHAS.slice(inicio, fim);
+
+    const paginaHTML = gerarListaHTML(i, resenhasPagina, totalPaginas);
+    const nomeArquivo = i === 1 ? 'todas-resenhas.html' : `todas-resenhas-${i}.html`;
+    fs.writeFileSync(path.join(pagesDir, nomeArquivo), paginaHTML, 'utf8');
+    console.log(`✅  Criado: pages/${nomeArquivo}`);
+  }
+}
+
+function gerarListaHTML(paginaNum, resenhasPagina, totalPaginas) {
+  const cardsHTML = resenhasPagina.map((r, index) => {
+    const notaNum = parseFloat(r.notaMedia);
+    const estrelas = [1, 2, 3, 4, 5].map(n => {
+      const opacity = isNaN(notaNum) ? '0.3' : (n <= Math.round(notaNum) ? '1' : '0.3');
+      return `<span style="opacity:${opacity}">🩷</span>`;
+    }).join('');
+    const favHTML = r.generoFiltro.includes('favoritos') ? '<span class="rc-fav" title="Favorita">⭑</span>' : '';
+    const generoPrincipal = r.genero.split('·')[0].trim();
+
+    return `
+        <article class="review-card glass" data-genre="${r.generoFiltro}">
+          <a href="${r.slug}.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:${r.faceGradient};--s:${r.spineColor}">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">${r.ornamento || '✦'}</div>
+                <div class="rc-title">${r.titulo}</div>
+                <div class="rc-author">${r.autora}</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">${generoPrincipal}</span>${favHTML}
+              </div>
+              <h3 class="rc-title-text">${r.tituloResenha}</h3>
+              <p class="rc-excerpt">${r.resumo}</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">${estrelas}</div>
+                <span class="rc-date">${r.dataFormatada}</span>
+              </div>
+            </div>
+          </a>
+        </article>`;
+  }).join('\n');
+
+  let paginacaoHTML = '';
+  if (totalPaginas > 1) {
+    paginacaoHTML = '<div class="pagination" style="text-align:center; margin-top: 50px; display:flex; justify-content:center; gap:8px;">';
+    for (let i = 1; i <= totalPaginas; i++) {
+      const activeStyle = i === paginaNum ? 'background:var(--crimson); color:white; border-color:var(--crimson);' : 'background:transparent; color:var(--ink-soft);';
+      const link = i === 1 ? 'todas-resenhas.html' : `todas-resenhas-${i}.html`;
+      paginacaoHTML += `<a href="${link}" class="btn-ghost-dark" style="padding: 10px 18px; min-width: 44px; justify-content:center; ${activeStyle}">${i}</a>`;
+    }
+    paginacaoHTML += '</div>';
+  }
+
+  return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todas as Resenhas — Página ${paginaNum} — Confraria Literária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body style="background:var(--white);">
+  <header class="site-header scrolled" style="background: rgba(255,253,253,.98);">
+    <div class="header__inner">
+      <nav class="header__meta">
+        <a href="sobre.html">Sobre mim</a>
+        <a href="../index.html#newsletter">Newsletter</a>
+      </nav>
+      <a href="../index.html" class="site-logo">Confraria<em>Literária</em></a>
+      <nav class="header__nav">
+        <a href="../index.html#leitura-atual">Leitura Atual</a>
+        <a href="../index.html#resenhas">Resenhas</a>
+        <a href="../index.html#favoritos">Favoritos</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="resenhas-section" style="padding-top: 140px; min-height: 70vh;">
+    <div class="resenhas-section__inner">
+      <div class="resenhas-header">
+        <div class="section-label"><span class="dot"></span> Arquivo</div>
+        <h2 class="resenhas-headline">Todas as resenhas</h2>
+      </div>
+
+      <div class="reviews-grid" style="margin-top: 40px;">
+        ${cardsHTML}
+      </div>
+      
+      ${paginacaoHTML}
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="sf-bottom">
+        <span>© ${new Date().getFullYear()} Ana Carolina Craveiro 🩷</span>
+        <span>Site Desenvolvido por <a href="https://www.linkedin.com/in/heliojunior1218/">Hélio Jr</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>`;
 }
 
 console.log('\n🩷  Concluído! Abra o site no navegador para ver as páginas geradas.');

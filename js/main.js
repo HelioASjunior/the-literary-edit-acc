@@ -1,5 +1,5 @@
 /* ============================================================
-   CÍRCULO LITERÁRIO — main.js
+   Confraria Literária — main.js
    Shared JS: nav, scroll reveal, progress bar, filters,
    newsletter, hamburger menu, hero date auto-update
    ============================================================ */
@@ -26,7 +26,7 @@
 
 /* ── HAMBURGER MENU ── */
 (function initHamburger() {
-  const btn  = document.getElementById('hamburger');
+  const btn = document.getElementById('hamburger');
   const menu = document.getElementById('mobileNav');
   if (!btn || !menu) return;
 
@@ -35,7 +35,7 @@
     const spans = btn.querySelectorAll('span');
     if (open) {
       spans[0].style.transform = 'rotate(45deg) translateY(6px)';
-      spans[1].style.opacity   = '0';
+      spans[1].style.opacity = '0';
       spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
     } else {
       spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
@@ -93,7 +93,7 @@
 /* ── NEWSLETTER FORM ── */
 function handleNewsletter(e) {
   e.preventDefault();
-  const btn     = document.getElementById('nlBtnText');
+  const btn = document.getElementById('nlBtnText');
   const success = document.getElementById('nlSuccess');
   if (!btn) return;
 
@@ -111,8 +111,8 @@ function handleNewsletter(e) {
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width)  * 100;
-      const y = ((e.clientY - r.top)  / r.height) * 100;
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
       card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,253,253,.72) 0%, rgba(255,253,253,.55) 60%)`;
       card.style.backdropFilter = 'blur(20px)';
     });
@@ -128,9 +128,9 @@ function handleNewsletter(e) {
   books.forEach(book => {
     book.addEventListener('mousemove', (e) => {
       const r = book.getBoundingClientRect();
-      const cx = r.left + r.width  / 2;
-      const cy = r.top  + r.height / 2;
-      const tx = ((e.clientX - cx) / (r.width  / 2)) *  5;
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const tx = ((e.clientX - cx) / (r.width / 2)) * 5;
       const ty = ((e.clientY - cy) / (r.height / 2)) * -5;
       book.style.transform = `perspective(800px) rotateX(${ty}deg) rotateY(${tx}deg) translateY(-4px)`;
     });
@@ -160,8 +160,8 @@ window.addEventListener('load', () => {
   ];
 
   const hoje = new Date();
-  const mes  = meses[hoje.getMonth()];
-  const ano  = hoje.getFullYear();
+  const mes = meses[hoje.getMonth()];
+  const ano = hoje.getFullYear();
 
   el.textContent = `${mes} · ${ano}`;
 })();

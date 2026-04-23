@@ -1,5 +1,5 @@
 /* ============================================================
-   CÍRCULO LITERÁRIO — resenhas.js
+   Confraria Literária — resenhas.js
    Banco de dados de resenhas.
 
    Como adicionar uma nova resenha:
@@ -25,7 +25,7 @@ window.RESENHAS = [
     resumo: 'Marchetti escreve como quem entende que a filosofia não precisa de pedestais. Um livro que parece saber exatamente quando você está pronta para lê-lo.',
     spineColor: '#8C0327',
     faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
-    ornamento: '✦',
+    ornamento: '★',
     tags: ['Filosofia', 'Autoconhecimento', 'Estoicismo', 'Favorita'],
     notaMedia: '4.7',
     notaContagem: '38 avaliações',
@@ -74,7 +74,7 @@ window.RESENHAS = [
     resumo: 'Toni Morrison não escreve sobre trauma. Ela escreve a partir dele — e a diferença é tudo. Beloved é um livro que não se lê: se atravessa.',
     spineColor: '#A62454',
     faceGradient: 'linear-gradient(145deg,#fce8f0,#e0c0d0)',
-    ornamento: '◈',
+    ornamento: '★',
     tags: ['Romance', 'Literatura Americana', 'Pulitzer', 'Favorita'],
     notaMedia: '',
     notaContagem: 'Seja a primeira a avaliar',
@@ -122,7 +122,7 @@ window.RESENHAS = [
     resumo: 'Uma leitura que muda a forma como você habita seu próprio corpo.',
     spineColor: '#E59888',
     faceGradient: 'linear-gradient(145deg,#fdf0eb,#f2cbc2)',
-    ornamento: '◉',
+    ornamento: '★',
     tags: ['Ciência', 'Psicologia', 'Trauma'],
     notaMedia: '4.5',
     notaContagem: '22 avaliações',
@@ -152,7 +152,7 @@ window.RESENHAS = [
     resumo: 'Clarice nos deixa sem chão para que possamos finalmente sentir o chão.',
     spineColor: '#8C0327',
     faceGradient: 'linear-gradient(145deg,#fdf8f3,#f5e0d0)',
-    ornamento: '✦',
+    ornamento: '★',
     tags: ['Literatura Brasileira', 'Existencialismo'],
     notaMedia: '5.0',
     notaContagem: '50 avaliações',
@@ -182,7 +182,7 @@ window.RESENHAS = [
     resumo: 'Beauvoir não envelheceu. Apenas ficou mais necessária.',
     spineColor: '#D95995',
     faceGradient: 'linear-gradient(145deg,#fceef5,#ecc8dc)',
-    ornamento: '◈',
+    ornamento: '★',
     tags: ['Filosofia', 'Feminismo'],
     notaMedia: '4.8',
     notaContagem: '45 avaliações',
@@ -212,7 +212,7 @@ window.RESENHAS = [
     resumo: 'Um livro que desperta algo adormecido. Leitura essencial.',
     spineColor: '#ECB1A5',
     faceGradient: 'linear-gradient(145deg,#fdf5f0,#f2cbc2)',
-    ornamento: '◉',
+    ornamento: '★',
     tags: ['Psicologia', 'Autoconhecimento'],
     notaMedia: '5.0',
     notaContagem: '80 avaliações',
@@ -230,6 +230,12 @@ window.RESENHAS = [
 
   /* ── ADICIONE NOVAS RESENHAS AQUI ────────────────────────────
 
+  REFERÊNCIAS DO LIVRO VC DEVE PEGAR AUTOMATICAMENTE DA INTERNET PARA PREENCHER, EXEMPLO: 
+    *  Título
+    *  Autora
+    *  Gênero
+    *  generoFiltro
+    *  Páginas 
   {
     slug: 'minha-nova-resenha',
     titulo: 'Título do Livro',
@@ -244,7 +250,7 @@ window.RESENHAS = [
     resumo: 'Resumo curto para o card da home.',
     spineColor: '#8C0327',
     faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
-    ornamento: '✦',
+    ornamento: '★',
     tags: ['Tag1', 'Tag2'],
     notaMedia: '',
     notaContagem: 'Seja a primeira a avaliar',
