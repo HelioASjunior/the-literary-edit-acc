@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://confrarialiteraria.com.br/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Sobre -->
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/sobre.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Todas as Resenhas -->
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/todas-resenhas.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Resenhas Individuais -->
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/guerra-adoravel-guerra-resenha.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/existir.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/beloved.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/clarice.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/corpo.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/simone.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://confrarialiteraria.com.br/pages/mulher.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>

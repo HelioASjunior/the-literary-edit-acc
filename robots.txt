@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Link para o mapa do site
+Sitemap: https://confrarialiteraria.com.br/sitemap.xml
