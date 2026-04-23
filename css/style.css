@@ -1342,6 +1342,7 @@ h4 {
   line-height: 1.85;
   margin-bottom: 16px;
   max-width: 480px;
+  text-align: justify;
 }
 
 .profile-image-frame {
@@ -1711,6 +1712,7 @@ h4 {
   line-height: 1.85;
   margin-bottom: 18px;
   max-width: 560px;
+  text-align: justify;
 }
 
 .sobre-stats {
