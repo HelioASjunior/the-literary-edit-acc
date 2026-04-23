@@ -198,7 +198,7 @@ async function enviarNewsletter(resenha) {
   <div class="outer">
     <div class="container">
       <div class="header">
-        <h1 class="brand">Confraria Literaria</h1>
+        <h1 class="brand">Confraria Literária</h1>
         <div class="heart-row">❤ ❤ ❤ ❤ ❤</div>
       </div>
 
@@ -213,13 +213,13 @@ async function enviarNewsletter(resenha) {
 
         <div class="cta-wrap">
           <a href="${reviewUrl}" class="btn">Ler Resenha Completa</a>
-          <p class="btn-note">Leitura com calma, cafe e coracao aberto.</p>
+          <p class="btn-note">Leitura com calma, café e coração aberto.</p>
         </div>
       </div>
 
       <div class="footer">
-        <p class="signature">Com carinho, Confraria Literaria ❤</p>
-        <p>© 2026 Confraria Literaria - Um espaco editorial para quem le com intencao.</p>
+        <p class="signature">Com carinho, Confraria Literária ❤</p>
+        <p>© 2026 Confraria Literária - Um espaço editorial para quem lê com intenção.</p>
         <p>Voce recebeu este e-mail porque se inscreveu em nossa newsletter.</p>
       </div>
     </div>
