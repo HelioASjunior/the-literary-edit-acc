@@ -353,7 +353,7 @@ lista.forEach(r => {
 
 /* ── ATUALIZA O INDEX.HTML (HOMEPAGE) ── */
 const indexPath = path.join(__dirname, 'index.html');
-if (fs.existsSync(indexPath) && !slugAlvo) { // Só atualiza o index se estiver gerando tudo
+if (fs.existsSync(indexPath)) { // Atualiza index e arquivo mesmo ao gerar por slug
   let indexHTML = fs.readFileSync(indexPath, 'utf8');
   console.log('\n🔄  Atualizando cards na homepage (index.html)...');
 
