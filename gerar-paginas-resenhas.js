@@ -111,6 +111,7 @@ function gerarHTML(r) {
     rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/review.css" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
 </head>
 
 <body class="review-page">
@@ -480,6 +481,7 @@ function gerarListaHTML(paginaNum, resenhasPagina, totalPaginas) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
 </head>
 <body style="background:var(--white);">
   <header class="site-header scrolled" style="background: rgba(255,253,253,.98);">
