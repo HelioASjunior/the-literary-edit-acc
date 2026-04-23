@@ -1,0 +1,187 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║         CÍRCULO LITERÁRIO — Como Criar uma Nova Resenha             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Este guia explica como publicar uma nova resenha no site usando o
+sistema automático de geração de páginas.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASSO 1 — Abrir o arquivo de dados
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abra o arquivo:
+
+    bookclub2/resenhas.js
+
+Este arquivo contém um array com todas as resenhas do site.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASSO 2 — Adicionar a nova resenha
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dentro do array window.RESENHAS = [ ... ], adicione uma vírgula após
+o último objeto e cole o bloco abaixo, preenchendo todos os campos:
+
+  {
+    slug: 'nome-do-livro',
+    // ↑ Só letras minúsculas, números e hífens. Sem espaços nem acentos.
+    // Será o nome do arquivo: pages/nome-do-livro.html
+
+    titulo: 'Título Completo do Livro',
+    tituloResenha: 'Frase editorial para o título da resenha',
+    autora: 'Nome da Autora',
+
+    genero: 'Filosofia · Autoconhecimento',
+    // ↑ Texto exibido no card e na página da resenha.
+
+    generoFiltro: 'filosofia autoconhecimento favoritos',
+    // ↑ Palavras para os filtros da home, separadas por espaço.
+    //   Opções disponíveis: todos, favoritos, filosofia, romance,
+    //   autoconhecimento, literatura, ciencia
+
+    paginas: '312',
+    publicado: '2023',
+
+    data: '2026-05-01',
+    dataFormatada: '1 de maio, 2026',
+
+    resumo: 'Resumo curto (1-2 linhas) para o card da home.',
+
+    spineColor: '#8C0327',
+    // ↑ Cor da lombada do livro (qualquer cor CSS)
+
+    faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
+    // ↑ Gradiente da capa do livro
+
+    ornamento: '✦',
+    // ↑ Símbolo decorativo na capa. Exemplos: ✦ ◈ ❧ ✿ ❦
+
+    tags: ['Filosofia', 'Autoconhecimento', 'Favorita'],
+    // ↑ Tags exibidas no final da resenha
+
+    notaMedia: '4.2',
+    // ↑ Deixe '' (vazio) para "Seja a primeira a avaliar"
+
+    notaContagem: '12 avaliações',
+    // ↑ Texto ao lado da nota. Ex: '12 avaliações' ou ''
+
+    conteudo: `
+      <p class="lead-paragraph">
+        Primeiro parágrafo — é o parágrafo de destaque.
+      </p>
+
+      <h2>Título de seção</h2>
+      <p>Corpo do texto da resenha.</p>
+      <p>Mais parágrafos aqui.</p>
+
+      <blockquote class="review-blockquote">
+        "Citação do livro."
+        <cite>— Autora, <em>Título</em>, p. XX</cite>
+      </blockquote>
+
+      <h2>Outro subtítulo</h2>
+      <p>Mais texto.</p>
+
+      <div class="pull-quote-review">
+        <p>"Sua frase de impacto sobre o livro."</p>
+      </div>
+    `
+  }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASSO 3 — Gerar a página HTML
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abra o terminal na pasta bookclub2 e execute:
+
+    node gerar-paginas-resenhas.js
+
+Isso gera (ou atualiza) os HTMLs de TODAS as resenhas do array.
+
+Para gerar apenas a resenha com um slug específico:
+
+    node gerar-paginas-resenhas.js nome-do-livro
+
+O arquivo será criado em:
+
+    pages/nome-do-livro.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASSO 4 — Adicionar o card na homepage (index.html)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Abra index.html e, dentro de <div class="reviews-grid">, adicione
+um novo card copiando e adaptando este modelo:
+
+  <article class="review-card glass reveal"
+           data-genre="filosofia autoconhecimento">
+    <!-- data-genre deve ser igual ao campo generoFiltro da resenha -->
+    <a href="pages/nome-do-livro.html" class="review-card__link">
+      <div class="review-card__cover">
+        <div class="book-cover"
+          style="--spine:#8C0327;--face:linear-gradient(145deg,#fdf3f7,#f0d5e2)">
+          <div class="book-cover__spine"></div>
+          <div class="book-cover__face">
+            <div class="book-cover__ornament">✦</div>
+            <div class="book-cover__title-book">"Título do Livro"</div>
+            <div class="book-cover__author-book">Nome da Autora</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card__body">
+        <div class="review-card__genre">Gênero</div>
+        <h3 class="review-card__title">Título editorial da resenha</h3>
+        <p class="review-card__excerpt">Resumo curto para o card.</p>
+        <span class="review-card__link-text">
+          Ler resenha
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.5">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </span>
+      </div>
+    </a>
+  </article>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESUMO RÁPIDO (checklist)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [ ] 1. Adicionar objeto no array em resenhas.js
+  [ ] 2. node gerar-paginas-resenhas.js
+  (O script irá gerar as páginas em /pages/ e atualizar o index.html automaticamente!)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILTROS DA HOME — valores disponíveis para generoFiltro
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  todos            → sempre aparece (não precisa colocar aqui)
+  favoritos        → aparece na aba "Favoritos"
+  filosofia
+  romance
+  autoconhecimento
+  literatura
+  ciencia
+
+Combine quantos quiser, separados por espaço:
+  generoFiltro: 'romance favoritos literatura'
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ELEMENTOS HTML disponíveis no campo `conteudo`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  <p class="lead-paragraph">...</p>       → Parágrafo de destaque (abertura)
+  <p>...</p>                               → Parágrafo normal
+  <h2>...</h2>                             → Subtítulo de seção
+  <em>...</em>                             → Itálico (títulos de livros)
+  <strong>...</strong>                     → Negrito
+  <blockquote class="review-blockquote">  → Citação do livro
+    "Texto da citação."
+    <cite>— Autora, <em>Título</em>, p. XX</cite>
+  </blockquote>
+  <div class="pull-quote-review">         → Frase de destaque
+    <p>"Frase de impacto."</p>
+  </div>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,266 @@
+/* ============================================================
+   CÍRCULO LITERÁRIO — resenhas.js
+   Banco de dados de resenhas.
+
+   Como adicionar uma nova resenha:
+   1. Copie um dos objetos abaixo e cole ao final do array.
+   2. Preencha todos os campos.
+   3. Execute no terminal: node gerar-paginas-resenhas.js
+   4. O arquivo pages/<slug>.html será criado automaticamente.
+   ============================================================ */
+
+window.RESENHAS = [
+
+  {
+    slug: 'existir',                           // Nome do arquivo HTML (sem extensão)
+    titulo: 'A Arte de Existir com Intenção',  // Título do livro
+    tituloResenha: 'Existir com intenção é um ato de coragem silenciosa', // Título da resenha
+    autora: 'Elena Marchetti',
+    genero: 'Filosofia · Autoconhecimento',    // Exibido no card e na página
+    generoFiltro: 'filosofia autoconhecimento favoritos', // Usado nos filtros da home (palavras separadas por espaço)
+    paginas: '312',
+    publicado: '2023',
+    data: '2025-11-18',                        // Data de publicação da resenha (AAAA-MM-DD)
+    dataFormatada: '18 de novembro, 2025',
+    resumo: 'Marchetti escreve como quem entende que a filosofia não precisa de pedestais. Um livro que parece saber exatamente quando você está pronta para lê-lo.',
+    spineColor: '#8C0327',
+    faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
+    ornamento: '✦',
+    tags: ['Filosofia', 'Autoconhecimento', 'Estoicismo', 'Favorita'],
+    notaMedia: '4.7',
+    notaContagem: '38 avaliações',
+    conteudo: `
+      <p class="lead-paragraph">
+        Elena Marchetti escreve como quem entende que a filosofia não precisa de pedestais.
+        Em <em>A Arte de Existir com Intenção</em>, ela nos convida a examinar — com honestidade
+        e sem pressa — a qualidade das escolhas que fazemos sobre nossa própria vida.
+      </p>
+
+      <h2>Um livro que chega quando você precisa</h2>
+      <p>
+        Existe uma categoria rara de livros que parecem ter sido escritos especialmente para você —
+        não porque falem da sua história, mas porque falam da sua condição.
+        <em>A Arte de Existir com Intenção</em> pertence a essa categoria.
+      </p>
+
+      <blockquote class="review-blockquote">
+        "Viver com intenção não é ter clareza sobre o destino. É reconhecer que cada passo é uma decisão."
+        <cite>— Elena Marchetti, <em>A Arte de Existir com Intenção</em>, p. 87</cite>
+      </blockquote>
+
+      <h2>O que permanece</h2>
+      <p>
+        Marchetti nos deixa com uma convicção: que existir bem é uma prática — não um estado que se atinge,
+        mas um movimento constante de atenção e escolha.
+      </p>
+
+      <div class="pull-quote-review">
+        <p>"Um livro que parece saber exatamente quando você está pronta para lê-lo."</p>
+      </div>
+    `
+  },
+
+  {
+    slug: 'beloved',
+    titulo: 'Beloved',
+    tituloResenha: 'Um livro que habita você, não o contrário',
+    autora: 'Toni Morrison',
+    genero: 'Romance histórico',
+    generoFiltro: 'romance favoritos',
+    paginas: '324',
+    publicado: '1987',
+    data: '2025-12-01',
+    dataFormatada: '1 de dezembro, 2025',
+    resumo: 'Toni Morrison não escreve sobre trauma. Ela escreve a partir dele — e a diferença é tudo. Beloved é um livro que não se lê: se atravessa.',
+    spineColor: '#A62454',
+    faceGradient: 'linear-gradient(145deg,#fce8f0,#e0c0d0)',
+    ornamento: '◈',
+    tags: ['Romance', 'Literatura Americana', 'Pulitzer', 'Favorita'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">
+        Toni Morrison não escreve sobre trauma. Ela escreve a partir dele — e a diferença é tudo.
+        <em>Beloved</em> é um livro que não se lê: se atravessa.
+      </p>
+
+      <h2>A escrita que dói de propósito</h2>
+      <p>
+        Há páginas em Beloved que são fisicamente difíceis de ler — não porque sejam mal escritas,
+        mas porque são escritas com uma honestidade radical sobre o que a escravidão fez com corpos,
+        mentes e almas humanas.
+      </p>
+
+      <blockquote class="review-blockquote">
+        <p>"Esta não é uma história para se passar adiante."</p>
+        <cite>— Toni Morrison, <em>Beloved</em></cite>
+      </blockquote>
+
+      <h2>Por que ler agora</h2>
+      <p>
+        Beloved ganhou o Pulitzer em 1988 e contribuiu para que Morrison ganhasse o Nobel de
+        Literatura em 1993. É um dos maiores romances já escritos — período.
+      </p>
+
+      <div class="pull-quote-review">
+        <p>"Toni Morrison escreveu um livro que habita você, não o contrário."</p>
+      </div>
+    `
+  },
+
+  {
+    slug: 'corpo',
+    titulo: 'O Corpo Guarda as Marcas',
+    tituloResenha: 'Uma leitura que muda a forma como você habita seu próprio corpo',
+    autora: 'B. van der Kolk',
+    genero: 'Ciência',
+    generoFiltro: 'autoconhecimento ciencia',
+    paginas: '448',
+    publicado: '2014',
+    data: '2025-09-10',
+    dataFormatada: 'Set 2025',
+    resumo: 'Uma leitura que muda a forma como você habita seu próprio corpo.',
+    spineColor: '#E59888',
+    faceGradient: 'linear-gradient(145deg,#fdf0eb,#f2cbc2)',
+    ornamento: '◉',
+    tags: ['Ciência', 'Psicologia', 'Trauma'],
+    notaMedia: '4.5',
+    notaContagem: '22 avaliações',
+    conteudo: `
+      <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
+        <div style="position:relative;z-index:1;padding:2rem;">
+          <div class="section-label" style="justify-content:center;margin-bottom:24px;"><span class="dot"></span> Resenha em breve</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:#18080e;margin-bottom:20px;">Esta resenha está sendo preparada</h1>
+          <p style="font-size:1rem;color:#7a3850;margin-bottom:40px;font-weight:300;">Volte em breve para ler a resenha completa.</p>
+          <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#8C0327;font-size:.85rem;border-bottom:1px solid rgba(140,3,39,.2);padding-bottom:2px;">← Voltar ao início</a>
+        </div>
+      </section>
+    `
+  },
+
+  {
+    slug: 'clarice',
+    titulo: 'A Paixão Segundo G.H.',
+    tituloResenha: 'Clarice nos deixa sem chão para que possamos finalmente sentir o chão',
+    autora: 'C. Lispector',
+    genero: 'Literatura',
+    generoFiltro: 'literatura',
+    paginas: '224',
+    publicado: '1964',
+    data: '2025-08-05',
+    dataFormatada: 'Ago 2025',
+    resumo: 'Clarice nos deixa sem chão para que possamos finalmente sentir o chão.',
+    spineColor: '#8C0327',
+    faceGradient: 'linear-gradient(145deg,#fdf8f3,#f5e0d0)',
+    ornamento: '✦',
+    tags: ['Literatura Brasileira', 'Existencialismo'],
+    notaMedia: '5.0',
+    notaContagem: '50 avaliações',
+    conteudo: `
+      <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
+        <div style="position:relative;z-index:1;padding:2rem;">
+          <div class="section-label" style="justify-content:center;margin-bottom:24px;"><span class="dot"></span> Resenha em breve</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:#18080e;margin-bottom:20px;">Esta resenha está sendo preparada</h1>
+          <p style="font-size:1rem;color:#7a3850;margin-bottom:40px;font-weight:300;">Volte em breve para ler a resenha completa.</p>
+          <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#8C0327;font-size:.85rem;border-bottom:1px solid rgba(140,3,39,.2);padding-bottom:2px;">← Voltar ao início</a>
+        </div>
+      </section>
+    `
+  },
+
+  {
+    slug: 'simone',
+    titulo: 'O Segundo Sexo',
+    tituloResenha: 'Beauvoir não envelheceu. Apenas ficou mais necessária',
+    autora: 'S. de Beauvoir',
+    genero: 'Filosofia',
+    generoFiltro: 'filosofia',
+    paginas: '900',
+    publicado: '1949',
+    data: '2025-07-20',
+    dataFormatada: 'Jul 2025',
+    resumo: 'Beauvoir não envelheceu. Apenas ficou mais necessária.',
+    spineColor: '#D95995',
+    faceGradient: 'linear-gradient(145deg,#fceef5,#ecc8dc)',
+    ornamento: '◈',
+    tags: ['Filosofia', 'Feminismo'],
+    notaMedia: '4.8',
+    notaContagem: '45 avaliações',
+    conteudo: `
+      <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
+        <div style="position:relative;z-index:1;padding:2rem;">
+          <div class="section-label" style="justify-content:center;margin-bottom:24px;"><span class="dot"></span> Resenha em breve</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:#18080e;margin-bottom:20px;">Esta resenha está sendo preparada</h1>
+          <p style="font-size:1rem;color:#7a3850;margin-bottom:40px;font-weight:300;">Volte em breve para ler a resenha completa.</p>
+          <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#8C0327;font-size:.85rem;border-bottom:1px solid rgba(140,3,39,.2);padding-bottom:2px;">← Voltar ao início</a>
+        </div>
+      </section>
+    `
+  },
+
+  {
+    slug: 'mulher',
+    titulo: 'Mulheres que Correm com os Lobos',
+    tituloResenha: 'Um livro que desperta algo adormecido. Leitura essencial.',
+    autora: 'C. Estés',
+    genero: 'Autoconhecimento',
+    generoFiltro: 'autoconhecimento favoritos',
+    paginas: '576',
+    publicado: '1992',
+    data: '2025-06-15',
+    dataFormatada: 'Jun 2025',
+    resumo: 'Um livro que desperta algo adormecido. Leitura essencial.',
+    spineColor: '#ECB1A5',
+    faceGradient: 'linear-gradient(145deg,#fdf5f0,#f2cbc2)',
+    ornamento: '◉',
+    tags: ['Psicologia', 'Autoconhecimento'],
+    notaMedia: '5.0',
+    notaContagem: '80 avaliações',
+    conteudo: `
+      <section class="review-hero" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:60vh;">
+        <div style="position:relative;z-index:1;padding:2rem;">
+          <div class="section-label" style="justify-content:center;margin-bottom:24px;"><span class="dot"></span> Resenha em breve</div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:#18080e;margin-bottom:20px;">Esta resenha está sendo preparada</h1>
+          <p style="font-size:1rem;color:#7a3850;margin-bottom:40px;font-weight:300;">Volte em breve para ler a resenha completa.</p>
+          <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#8C0327;font-size:.85rem;border-bottom:1px solid rgba(140,3,39,.2);padding-bottom:2px;">← Voltar ao início</a>
+        </div>
+      </section>
+    `
+  }
+
+  /* ── ADICIONE NOVAS RESENHAS AQUI ────────────────────────────
+
+  {
+    slug: 'minha-nova-resenha',
+    titulo: 'Título do Livro',
+    tituloResenha: 'Título editorial da resenha',
+    autora: 'Nome da Autora',
+    genero: 'Gênero exibido',
+    generoFiltro: 'filosofia romance autoconhecimento',
+    paginas: '280',
+    publicado: '2024',
+    data: '2026-05-01',
+    dataFormatada: '1 de maio, 2026',
+    resumo: 'Resumo curto para o card da home.',
+    spineColor: '#8C0327',
+    faceGradient: 'linear-gradient(145deg,#fdf3f7,#f0d5e2)',
+    ornamento: '✦',
+    tags: ['Tag1', 'Tag2'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">Parágrafo de abertura (lead).</p>
+      <h2>Subtítulo da seção</h2>
+      <p>Corpo do texto da resenha.</p>
+      <blockquote class="review-blockquote">
+        "Citação do livro."
+        <cite>— Autora, <em>Título</em>, p. XX</cite>
+      </blockquote>
+      <div class="pull-quote-review">
+        <p>"Sua frase de impacto sobre o livro."</p>
+      </div>
+    `
+  }
+
+  ─────────────────────────────────────────────────────────── */
+];

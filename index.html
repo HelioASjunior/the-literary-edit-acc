@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Círculo Literário — Clube do Livro Editorial</title>
+  <meta name="description"
+    content="Resenhas literárias, leituras curadas e comunidade editorial para mulheres que lêem com profundidade." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Cormorant Garamond as display serif (editorial), DM Sans as Glossier/Aperçu premium alternative -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ── SCROLL PROGRESS ── -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ========================================================
+       NAV — editorial header
+       ======================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header__inner">
+      <nav class="header__meta">
+        <a href="pages/sobre.html">Sobre mim</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
+
+      <a href="index.html" class="site-logo">
+        Círculo<em>Literário</em>
+      </a>
+
+      <nav class="header__nav">
+        <a href="#leitura-atual">Leitura Atual</a>
+        <a href="#resenhas">Resenhas</a>
+        <a href="#favoritos">Favoritos</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile menu -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="pages/sobre.html">Sobre mim</a>
+      <a href="#leitura-atual">Leitura Atual</a>
+      <a href="#resenhas">Resenhas</a>
+      <a href="#favoritos">Favoritos</a>
+      <a href="#newsletter">Newsletter</a>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       HERO — editorial masthead
+       ======================================================== -->
+  <section class="hero-editorial">
+    <div class="hero-editorial__inner">
+      <div class="hero-editorial__date reveal">Novembro · 2025</div>
+      <h1 class="hero-editorial__title reveal reveal--delay">
+        Um espaço para quem<br />
+        <em>lê com intenção.</em>
+      </h1>
+      <p class="hero-editorial__sub reveal reveal--delay-2">
+        Resenhas literárias, curadoria mensal e comunidade para mulheres que encontram no livro uma forma de pensar.
+      </p>
+      <div class="hero-editorial__line reveal reveal--delay-3"></div>
+    </div>
+
+    <!-- Decorative blobs -->
+    <div class="blob blob--hero-1"></div>
+    <div class="blob blob--hero-2"></div>
+  </section>
+
+  <!-- ========================================================
+       ÚLTIMA RESENHA PUBLICADA — featured editorial block
+       ======================================================== -->
+  <section class="ultima-resenha" id="ultima-resenha">
+    <div class="ultima-resenha__inner">
+      <div class="section-label reveal"><span class="dot"></span> Última Resenha</div>
+
+      <div class="ultima-resenha__grid reveal">
+        <!-- Book cover -->
+        <div class="ultima-resenha__cover-wrap">
+          <div class="book-cover book-cover--featured"
+            style="--spine:#8C0327;--face:linear-gradient(145deg,#fdf3f7,#f0d5e2)">
+            <div class="book-cover__spine"></div>
+            <div class="book-cover__face">
+              <div class="book-cover__ornament">✦</div>
+              <div class="book-cover__title-book">"A Arte de Existir com Intenção"</div>
+              <div class="book-cover__author-book">Elena Marchetti</div>
+            </div>
+          </div>
+          <div class="cover-shadow"></div>
+        </div>
+
+        <!-- Review excerpt -->
+        <div class="ultima-resenha__content">
+          <div class="review-meta">
+            <span class="review-meta__genre">Filosofia · Autoconhecimento</span>
+            <span class="review-meta__date">18 de novembro, 2025</span>
+          </div>
+          <h2 class="ultima-resenha__title">
+            Existir com intenção é um ato de coragem silenciosa
+          </h2>
+          <p class="ultima-resenha__excerpt">
+            Elena Marchetti escreve como quem entende que a filosofia não precisa de pedestais. Em <em>A Arte de Existir
+              com Intenção</em>, ela nos convida a examinar — com honestidade e sem pressa — a qualidade das escolhas
+            que fazemos sobre nossa própria vida. Um livro que parece saber exatamente quando você está pronta para
+            lê-lo.
+          </p>
+          <!-- Heart rating preview -->
+          <div class="rating-preview">
+            <div class="hearts-display">
+              <span class="heart heart--filled">🩷</span>
+              <span class="heart heart--filled">🩷</span>
+              <span class="heart heart--filled">🩷</span>
+              <span class="heart heart--filled">🩷</span>
+              <span class="heart heart--half">🩷</span>
+            </div>
+            <span class="rating-text">4.7 · 38 avaliações</span>
+          </div>
+          <a href="pages/resenha-existir.html" class="link-editorial">
+            Ler a resenha completa
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LEITURA ATUAL — featured current read
+       ======================================================== -->
+  <section class="leitura-atual" id="leitura-atual">
+    <div class="leitura-atual__inner">
+      <div class="leitura-atual__text reveal">
+        <div class="section-label"><span class="dot"></span> Leitura Atual</div>
+        <h2 class="leitura-atual__headline">
+          O que estou<br /><em>lendo agora</em>
+        </h2>
+        <p class="leitura-atual__desc">
+          Cada mês acompanho um livro de perto — aqui você vê o que está me ocupando os pensamentos enquanto escrevo a
+          próxima resenha.
+        </p>
+
+        <div class="current-book glass">
+          <div class="current-book__mini-cover" style="background:linear-gradient(145deg,#fce8f0,#e8c0d4)">
+            <div class="mini-spine" style="background:#A62454"></div>
+            <div class="mini-face">
+              <div class="mini-ornament">◈</div>
+              <div class="mini-title">Beloved</div>
+              <div class="mini-author">Toni Morrison</div>
+            </div>
+          </div>
+          <div class="current-book__info">
+            <div class="current-book__tag">Lendo agora</div>
+            <h3 class="current-book__title">Beloved</h3>
+            <p class="current-book__author">Toni Morrison</p>
+            <p class="current-book__genre">Romance histórico · Literatura americana</p>
+            <!-- Reading progress -->
+            <div class="progress-wrap">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 63%"></div>
+              </div>
+              <span class="progress-label">63% concluído</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="leitura-atual__visual reveal reveal--delay">
+        <div class="reading-composition">
+          <div class="big-book glass">
+            <div class="big-book__spine" style="background:linear-gradient(180deg,#A62454,#8C0327)"></div>
+            <div class="big-book__cover">
+              <div class="bbc__top">
+                <span class="bbc__tag">Recomendação</span>
+              </div>
+              <div class="bbc__ornament">✦</div>
+              <div class="bbc__title">Beloved</div>
+              <div class="bbc__author">Toni Morrison</div>
+              <div class="bbc__line"></div>
+              <div class="bbc__genre">Romance · 1987</div>
+            </div>
+          </div>
+          <div class="reading-note glass float-1">
+            <div class="rn__label">Impressão até agora</div>
+            <p class="rn__text">"Páginas que ficam."</p>
+          </div>
+          <div class="reading-pages float-2">
+            <div class="page page--1"></div>
+            <div class="page page--2"></div>
+            <div class="page page--3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       RESENHAS — filterable review grid
+       ======================================================== -->
+  <section class="resenhas-section" id="resenhas">
+    <div class="resenhas-section__inner">
+      <div class="resenhas-header reveal">
+        <div class="section-label"><span class="dot"></span> Resenhas</div>
+        <h2 class="resenhas-headline">Todas as resenhas</h2>
+      </div>
+
+      <!-- Filter pills — genre + favorites -->
+      <div class="filter-bar reveal">
+        <button class="filter-pill active" data-filter="todos">Todas</button>
+        <button class="filter-pill" data-filter="favoritos">⭑ Favoritas</button>
+        <button class="filter-pill" data-filter="filosofia">Filosofia</button>
+        <button class="filter-pill" data-filter="romance">Romance</button>
+        <button class="filter-pill" data-filter="autoconhecimento">Autoconhecimento</button>
+        <button class="filter-pill" data-filter="literatura">Literatura</button>
+        <button class="filter-pill" data-filter="ciencia">Ciência</button>
+      </div>
+
+      <!-- Reviews grid -->
+      <div class="reviews-grid" id="reviewsGrid">
+
+        
+        <!-- Review card 1 -->
+        <article class="review-card glass reveal" data-genre="filosofia autoconhecimento favoritos">
+          <a href="pages/existir.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fdf3f7,#f0d5e2);--s:#8C0327">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">✦</div>
+                <div class="rc-title">A Arte de Existir com Intenção</div>
+                <div class="rc-author">Elena Marchetti</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Filosofia</span>
+                <span class="rc-fav" title="Favorita">⭑</span>
+              </div>
+              <h3 class="rc-title-text">Existir com intenção é um ato de coragem silenciosa</h3>
+              <p class="rc-excerpt">Marchetti escreve como quem entende que a filosofia não precisa de pedestais. Um livro que parece saber exatamente quando você está pronta para lê-lo.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span>
+                </div>
+                <span class="rc-date">18 de novembro, 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Review card 2 -->
+        <article class="review-card glass reveal reveal--delay" data-genre="romance favoritos">
+          <a href="pages/beloved.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fce8f0,#e0c0d0);--s:#A62454">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">◈</div>
+                <div class="rc-title">Beloved</div>
+                <div class="rc-author">Toni Morrison</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Romance histórico</span>
+                <span class="rc-fav" title="Favorita">⭑</span>
+              </div>
+              <h3 class="rc-title-text">Um livro que habita você, não o contrário</h3>
+              <p class="rc-excerpt">Toni Morrison não escreve sobre trauma. Ela escreve a partir dele — e a diferença é tudo. Beloved é um livro que não se lê: se atravessa.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:0.3">🩷</span><span style="opacity:0.3">🩷</span><span style="opacity:0.3">🩷</span><span style="opacity:0.3">🩷</span><span style="opacity:0.3">🩷</span>
+                </div>
+                <span class="rc-date">1 de dezembro, 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Review card 3 -->
+        <article class="review-card glass reveal reveal--delay-2" data-genre="autoconhecimento ciencia">
+          <a href="pages/corpo.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fdf0eb,#f2cbc2);--s:#E59888">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">◉</div>
+                <div class="rc-title">O Corpo Guarda as Marcas</div>
+                <div class="rc-author">B. van der Kolk</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Ciência</span>
+              </div>
+              <h3 class="rc-title-text">Uma leitura que muda a forma como você habita seu próprio corpo</h3>
+              <p class="rc-excerpt">Uma leitura que muda a forma como você habita seu próprio corpo.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span>
+                </div>
+                <span class="rc-date">Set 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Review card 4 -->
+        <article class="review-card glass reveal" data-genre="literatura">
+          <a href="pages/clarice.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fdf8f3,#f5e0d0);--s:#8C0327">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">✦</div>
+                <div class="rc-title">A Paixão Segundo G.H.</div>
+                <div class="rc-author">C. Lispector</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Literatura</span>
+              </div>
+              <h3 class="rc-title-text">Clarice nos deixa sem chão para que possamos finalmente sentir o chão</h3>
+              <p class="rc-excerpt">Clarice nos deixa sem chão para que possamos finalmente sentir o chão.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span>
+                </div>
+                <span class="rc-date">Ago 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Review card 5 -->
+        <article class="review-card glass reveal reveal--delay" data-genre="filosofia">
+          <a href="pages/simone.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fceef5,#ecc8dc);--s:#D95995">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">◈</div>
+                <div class="rc-title">O Segundo Sexo</div>
+                <div class="rc-author">S. de Beauvoir</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Filosofia</span>
+              </div>
+              <h3 class="rc-title-text">Beauvoir não envelheceu. Apenas ficou mais necessária</h3>
+              <p class="rc-excerpt">Beauvoir não envelheceu. Apenas ficou mais necessária.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span>
+                </div>
+                <span class="rc-date">Jul 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- Review card 6 -->
+        <article class="review-card glass reveal reveal--delay-2" data-genre="autoconhecimento favoritos">
+          <a href="pages/mulher.html" class="review-card__link">
+            <div class="review-card__cover" style="--g:linear-gradient(145deg,#fdf5f0,#f2cbc2);--s:#ECB1A5">
+              <div class="rc-spine"></div>
+              <div class="rc-face">
+                <div class="rc-ornament">◉</div>
+                <div class="rc-title">Mulheres que Correm com os Lobos</div>
+                <div class="rc-author">C. Estés</div>
+              </div>
+            </div>
+            <div class="review-card__body">
+              <div class="rc-meta">
+                <span class="rc-genre-tag">Autoconhecimento</span>
+                <span class="rc-fav" title="Favorita">⭑</span>
+              </div>
+              <h3 class="rc-title-text">Um livro que desperta algo adormecido. Leitura essencial.</h3>
+              <p class="rc-excerpt">Um livro que desperta algo adormecido. Leitura essencial.</p>
+              <div class="rc-footer">
+                <div class="rc-hearts">
+                  <span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span><span style="opacity:1">🩷</span>
+                </div>
+                <span class="rc-date">Jun 2025</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+      </div><!-- /reviews-grid -->
+
+      <div class="load-more-wrap reveal">
+        <button class="btn-ghost-dark">Ver todas as resenhas</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LIVROS FAVORITOS DO MÊS
+       ======================================================== -->
+  <section class="favoritos-mes" id="favoritos">
+    <div class="favoritos-mes__inner">
+      <div class="favoritos-header reveal">
+        <div class="section-label light"><span class="dot dot--light"></span> Seleção Editorial</div>
+        <h2 class="favoritos-headline">Favoritos de <em>abril</em></h2>
+        <p class="favoritos-sub">Os livros que mais me marcaram este mês — curadoria com carinho e critério.</p>
+      </div>
+
+      <div class="favoritos-grid">
+        <div class="fav-card glass reveal">
+          <div class="fav-book" style="--sc:#8C0327;--bg:linear-gradient(145deg,#fdf3f7,#f0d5e2)">
+            <div class="fav-spine"></div>
+            <div class="fav-face">
+              <div class="fav-symbol">✦</div>
+              <div class="fav-name">A Arte de Existir</div>
+            </div>
+          </div>
+          <div class="fav-info">
+            <span class="fav-num">01</span>
+            <h3>A Arte de Existir com Intenção</h3>
+            <p>Elena Marchetti</p>
+            <div class="fav-hearts">🩷🩷🩷🩷🩷</div>
+          </div>
+        </div>
+
+        <div class="fav-card glass reveal reveal--delay">
+          <div class="fav-book" style="--sc:#A62454;--bg:linear-gradient(145deg,#fce8f0,#e0c0d0)">
+            <div class="fav-spine"></div>
+            <div class="fav-face">
+              <div class="fav-symbol">◈</div>
+              <div class="fav-name">Beloved</div>
+            </div>
+          </div>
+          <div class="fav-info">
+            <span class="fav-num">02</span>
+            <h3>Beloved</h3>
+            <p>Toni Morrison</p>
+            <div class="fav-hearts">🩷🩷🩷🩷🩷</div>
+          </div>
+        </div>
+
+        <div class="fav-card glass reveal reveal--delay-2">
+          <div class="fav-book" style="--sc:#D95995;--bg:linear-gradient(145deg,#fceef5,#ecc8dc)">
+            <div class="fav-spine"></div>
+            <div class="fav-face">
+              <div class="fav-symbol">◉</div>
+              <div class="fav-name">Mulheres que Correm</div>
+            </div>
+          </div>
+          <div class="fav-info">
+            <span class="fav-num">03</span>
+            <h3>Mulheres que Correm com os Lobos</h3>
+            <p>Clarissa Pinkola Estés</p>
+            <div class="fav-hearts">🩷🩷🩷🩷🩷</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SOBRE MIM — inline preview (full page: pages/sobre.html)
+       ======================================================== -->
+  <section class="sobre-preview" id="sobre">
+    <div class="sobre-preview__inner">
+      <div class="sobre-preview__content reveal">
+        <div class="section-label"><span class="dot"></span> Sobre mim</div>
+        <h2 class="sobre-headline">
+          Uma leitora que<br /><em>anota nas margens.</em>
+        </h2>
+        <p class="sobre-body">
+          Sou escritora, leitora compulsiva e criadora do Círculo Literário. Escrevo resenhas como quem escreve cartas —
+          com honestidade, sem pressa, e com a convicção de que cada livro certo chega na hora exata.
+        </p>
+        <p class="sobre-body">
+          Este espaço nasceu da vontade de ter conversas mais profundas sobre leitura — longe do superficial, perto do
+          essencial.
+        </p>
+        <a href="pages/sobre.html" class="link-editorial">
+          Conheça minha história
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      </div>
+      <div class="sobre-preview__image reveal reveal--delay">
+        <div class="profile-image-frame">
+          <div class="profile-image-placeholder">
+            <!-- Replace this div with <img src="..." alt="Foto de perfil" /> -->
+            <div class="pip__inner">
+              <div class="pip__ornament">✦</div>
+              <p>Sua foto aqui</p>
+            </div>
+          </div>
+          <div class="profile-frame-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       NEWSLETTER
+       ======================================================== -->
+  <section class="newsletter" id="newsletter">
+    <div class="newsletter__inner reveal">
+      <div class="newsletter__text">
+        <div class="section-label"><span class="dot"></span> Newsletter</div>
+        <h2 class="newsletter-headline">
+          Receba as próximas resenhas<br /><em>em primeira mão</em>
+        </h2>
+        <p class="newsletter-body">
+          Sem spam. Apenas novas resenhas, leituras e reflexões — diretamente no seu e-mail, quando estiverem prontas.
+        </p>
+      </div>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <div class="newsletter-form__row">
+          <input type="email" placeholder="Seu melhor e-mail" class="nl-input" required />
+          <button type="submit" class="nl-btn">
+            <span id="nlBtnText">Quero receber</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+        <p class="nl-disclaimer">Sua privacidade é respeitada. Cancele quando quiser.</p>
+        <div class="nl-success" id="nlSuccess" style="display:none">
+          🩷 Que bom! Você receberá as próximas resenhas em primeira mão.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="sf-top">
+        <div class="sf-brand">
+          <div class="sf-logo">Círculo<em>Literário</em></div>
+          <p>Um espaço editorial para mulheres que lêem com profundidade e intenção.</p>
+        </div>
+        <div class="sf-links">
+          <div class="sf-col">
+            <h4>Navegação</h4>
+            <a href="pages/sobre.html">Sobre mim</a>
+            <a href="#resenhas">Resenhas</a>
+            <a href="#favoritos">Favoritos</a>
+            <a href="#newsletter">Newsletter</a>
+          </div>
+          <div class="sf-col">
+            <h4>Gêneros</h4>
+            <a href="#">Filosofia</a>
+            <a href="#">Romance</a>
+            <a href="#">Autoconhecimento</a>
+            <a href="#">Literatura</a>
+          </div>
+          <div class="sf-col">
+            <h4>Contato</h4>
+            <a href="#">contato@circuloliterario.com.br</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="sf-bottom">
+        <span>© 2026 Ana Carolina Craveiro 🩷</span>
+        <span>Site Desenvolvido por <a href="https://www.linkedin.com/in/heliojunior1218/">Hélio Jr</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
