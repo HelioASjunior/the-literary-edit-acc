@@ -5,39 +5,21 @@
 ```
 bookclub2/
 ├── index.html              ← Página principal (homepage)
-├── css/
-│   ├── style.css           ← Design system completo (tokens, componentes, layout)
-│   └── review.css          ← Estilos específicos para páginas de resenha
-├── js/
-│   ├── main.js             ← JS compartilhado (nav, reveal, filtros, newsletter)
-│   └── review.js           ← Sistema de corações e comentários (por resenha)
-└── pages/
-    ├── sobre.html                  ← Página "Sobre mim"
-    ├── resenha-existir.html        ← Resenha completa (modelo principal)
-    ├── resenha-beloved.html        ← Resenha completa
-    ├── resenha-corpo.html          ← Stub (aguardando conteúdo)
-    ├── resenha-clarice.html        ← Stub (aguardando conteúdo)
-    ├── resenha-simone.html         ← Stub (aguardando conteúdo)
-    └── resenha-mulher.html         ← Stub (aguardando conteúdo)
-```
+├── resenhas.js             ← BANCO DE DADOS (Adicione novas resenhas aqui)
+├── gerar-paginas-resenhas.js ← SCRIPT GERADOR (Execute para criar as páginas)
+├── pages/
+│   ├── sobre.html          ← Página "Sobre mim"
+│   └── <slug>.html         ← Resenhas geradas automaticamente
+└── js/
+    ├── main.js             ← JS compartilhado
+    └── review.js           ← Sistema de corações e comentários
 
----
+## Como Adicionar uma Resenha
+1. Abra o arquivo `resenhas.js`.
+2. Adicione os dados do livro ao final do array.
+3. No terminal, execute: `node gerar-paginas-resenhas.js`.
+4. As páginas e a home serão atualizadas automaticamente!
 
-## Como Adicionar uma Nova Resenha
-
-### 1. Crie a página da resenha
-
-Duplique `pages/resenha-existir.html` e renomeie para `pages/resenha-meulivro.html`.
-
-### 2. Defina o ID único da resenha
-
-No HTML da nova página, mude o atributo `data-review` em dois lugares:
-
-```html
-<!-- Sistema de corações -->
-<div class="hearts-interactive" id="heartsInteractive" data-review="meulivro">
-
-<!-- Sistema de comentários -->
 <form class="comment-form glass" id="commentForm" data-review="meulivro" ...>
 ```
 
