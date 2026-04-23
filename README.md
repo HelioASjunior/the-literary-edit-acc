@@ -10,7 +10,7 @@ A **Confraria Literária** é uma plataforma editorial digital projetada para mu
 
 ## 📸 Preview do Projeto
 
-*(Espaço para capturas de tela do site)*
+![alt text](image.png)
 
 - **Homepage Editorial**: Grid dinâmico de resenhas com filtros inteligentes.
 - **Leitura Atual**: Card interativo com progresso de leitura e notas pessoais.
