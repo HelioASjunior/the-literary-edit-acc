@@ -1,8 +1,8 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { JWT } = require('google-auth-library');
-
 module.exports = async (req, res) => {
   try {
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
+    const { JWT } = require('google-auth-library');
+
     const { reviewId } = req.query || {};
     const missingVars = [
       'GOOGLE_SERVICE_ACCOUNT_EMAIL',

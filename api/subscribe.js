@@ -1,8 +1,8 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { JWT } = require('google-auth-library');
-
 module.exports = async (req, res) => {
   try {
+    const { GoogleSpreadsheet } = require('google-spreadsheet');
+    const { JWT } = require('google-auth-library');
+
     if (req.method !== 'POST') {
       return res.status(405).json({ success: false, message: 'Método não permitido.' });
     }
