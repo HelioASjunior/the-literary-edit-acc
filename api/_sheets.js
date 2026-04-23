@@ -1,7 +1,20 @@
 const { google } = require('googleapis');
 
 function getPrivateKey() {
-  return (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+  let key = String(process.env.GOOGLE_PRIVATE_KEY || '').trim();
+
+  // Vercel/env UIs may persist surrounding quotes when pasted from .env files.
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1);
+  }
+
+  // Accept both escaped and real line breaks from different environments.
+  key = key
+    .replace(/\\r\\n/g, '\n')
+    .replace(/\\n/g, '\n')
+    .replace(/\r\n/g, '\n');
+
+  return key;
 }
 
 function getMissingVars() {
