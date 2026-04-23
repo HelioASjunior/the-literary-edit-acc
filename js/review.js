@@ -60,7 +60,7 @@
 
       // Update Top (if exists)
       if (rsAvgTop) rsAvgTop.textContent = avg > 0 ? avg.toFixed(1) : '—';
-      if (rsCountTop) rsCountTop.textContent = count > 0 ? countText : 'Sem avaliações';
+      if (rsCountTop) rsCountTop.textContent = count > 0 ? countText : 'Seja a primeira a avaliar';
       if (rsHeartsTop) {
         const estrelas = [1, 2, 3, 4, 5].map(n => {
           const opacity = avg === 0 ? '0.3' : (n <= Math.round(avg) ? '1' : '0.3');

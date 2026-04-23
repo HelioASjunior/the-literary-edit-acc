@@ -90,7 +90,7 @@ function gerarHTML(r) {
             <div class="rs-hearts" id="rsHeartsTop">${estrelas}</div>
             <div class="rs-numbers">
               <span class="rs-avg" id="rsAvgTop">${r.notaMedia || '—'}</span>
-              <span class="rs-count" id="rsCountTop">${r.notaContagem || 'Sem avaliações'}</span>
+              <span class="rs-count" id="rsCountTop">${r.notaContagem || 'Seja a primeira a avaliar'}</span>
             </div>
           </div>`;
 
@@ -344,10 +344,68 @@ lista.forEach(r => {
 /* ── ATUALIZA O INDEX.HTML (HOMEPAGE) ── */
 const indexPath = path.join(__dirname, 'index.html');
 if (fs.existsSync(indexPath) && !slugAlvo) { // Só atualiza o index se estiver gerando tudo
-  console.log('\n🔄  Atualizando cards na homepage (index.html)...');
   let indexHTML = fs.readFileSync(indexPath, 'utf8');
+  console.log('\n🔄  Atualizando cards na homepage (index.html)...');
 
-  // Limite de 6 na página inicial
+  // 1. Atualiza a seção ÚLTIMA RESENHA (Hero)
+  const ultima = RESENHAS[0];
+  const notaNumUltima = parseFloat(ultima.notaMedia);
+  const estrelasUltima = [1, 2, 3, 4, 5].map(n => {
+    const opacity = isNaN(notaNumUltima) ? '0.2' : (n <= Math.round(notaNumUltima) ? '1' : '0.2');
+    return `<span class="heart" style="opacity:${opacity}">🩷</span>`;
+  }).join('');
+
+  const lastReviewHTML = `
+      <div class="ultima-resenha__grid reveal">
+        <!-- Book cover -->
+        <div class="ultima-resenha__cover-wrap">
+          <div class="book-cover book-cover--featured"
+            style="--spine:${ultima.spineColor};--face:${ultima.faceGradient}">
+            <div class="book-cover__spine"></div>
+            <div class="book-cover__face">
+              <div class="book-cover__ornament">${ultima.ornamento || '✦'}</div>
+              <div class="book-cover__title-book">"${ultima.titulo}"</div>
+              <div class="book-cover__author-book">${ultima.autora}</div>
+            </div>
+          </div>
+          <div class="cover-shadow"></div>
+        </div>
+
+        <!-- Review excerpt -->
+        <div class="ultima-resenha__content">
+          <div class="review-meta">
+            <span class="review-meta__genre">${ultima.genero}</span>
+            <span class="review-meta__date">${ultima.dataFormatada}</span>
+          </div>
+          <h2 class="ultima-resenha__title">
+            ${ultima.tituloResenha}
+          </h2>
+          <p class="ultima-resenha__excerpt">
+            ${ultima.resumo}
+          </p>
+          <!-- Heart rating preview -->
+          <div class="rating-preview">
+            <div class="hearts-display">
+              ${estrelasUltima}
+            </div>
+            <span class="rating-text">${ultima.notaContagem || 'Seja a primeira a avaliar'}</span>
+          </div>
+          <a href="pages/${ultima.slug}.html" class="link-editorial">
+            Ler a resenha completa
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </div>`;
+
+  const regexLast = /(<!-- LAST_REVIEW_START -->\s*)([\s\S]*?)(\s*<!-- LAST_REVIEW_END -->)/;
+  if (regexLast.test(indexHTML)) {
+    indexHTML = indexHTML.replace(regexLast, `$1${lastReviewHTML}$3`);
+  }
+
+  // 2. Atualiza a grade de resenhas (Grid)
   const cardsHTML = RESENHAS.slice(0, 6).map((r, index) => {
     // Calcula as estrelas do card
     const notaNum = parseFloat(r.notaMedia);
