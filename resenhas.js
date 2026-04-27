@@ -12,6 +12,45 @@
 window.RESENHAS = [
 
 {
+    slug: 'o-que-resta-de-nos-resenha',
+    titulo: 'O Que Resta de Nós',
+    tituloResenha: 'A Delicadeza dos Recontros e a Arte de Recomeçar',
+    autora: 'Virginie Grimaldi',
+    genero: 'Ficção Contemporânea',
+    generoFiltro: 'romance drama acolhedor superacao',
+    paginas: '272',
+    publicado: '2023',
+    data: '2026-04-27',
+    dataFormatada: '27 de abril, 2026',
+    resumo: 'Uma viúva de 74 anos abre as portas de sua casa para dois desconhecidos, provando que o afeto e a esperança podem florescer em qualquer idade.',
+    spineColor: '#5B7A8C',
+    faceGradient: 'linear-gradient(145deg, #f0f7f9, #d9e6ed)',
+    ornamento: '✿',
+    tags: ['Luto', 'Amizade Intergeracional', 'Literatura Francesa'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph"><em>O que resta de nós</em>, de Virginie Grimaldi, é um romance sensível e emocionante que aborda temas como luto, solidão, perdas e recomeços. A narrativa nos apresenta Jeanne, uma viúva de 74 anos que, após a morte do marido, se vê diante do vazio da casa e da dificuldade de seguir em frente sozinha.</p>
+      
+      <h2>Um Apartamento, Três Destinos</h2>
+      <p>Para lidar com a solidão e também com questões financeiras, Jeanne decide alugar dois quartos de seu apartamento. É assim que entram em sua vida Théo, um jovem de 18 anos que enfrenta dificuldades pessoais e financeiras, e Iris, uma mulher de 33 anos marcada por traumas e tentando reconstruir sua vida.</p>
+      
+      <blockquote class="review-blockquote">
+        "Às vezes, a vida nos tira tudo para nos mostrar que ainda somos capazes de construir algo novo com os pedaços que sobraram."
+        <cite>— Virginie Grimaldi, <em>O Que Resta de Nós</em></cite>
+      </blockquote>
+
+      <p>Apesar de serem completos desconhecidos e viverem momentos muito diferentes, os três acabam criando uma conexão profunda e inesperada, transformando o espaço físico em um verdadeiro refúgio emocional.</p>
+
+      <div class="pull-quote-review">
+        <p>"O afeto pode surgir nos lugares mais improváveis, provando que nunca é tarde para encontrar novas formas de amor."</p>
+      </div>
+
+      <p>Com uma escrita delicada, acolhedora e realista, Grimaldi mostra como, mesmo depois de grandes perdas, ainda é possível encontrar esperança e pertencimento. É uma leitura tocante, humana e cheia de sensibilidade.</p>
+    `
+  },
+  
+{
     slug: 'guerra-adoravel-guerra-resenha',
     titulo: 'Guerra Adorável Guerra',
     tituloResenha: 'O Amor sob o Olhar dos Deuses no Caos da Grande Guerra',
