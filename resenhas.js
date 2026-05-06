@@ -11,7 +11,47 @@
 
 window.RESENHAS = [
 
-{
+  {
+    slug: 'olhai-os-lirios-do-campo-resenha',
+    titulo: 'Olhai os Lírios do Campo',
+    tituloResenha: 'Ambição, Redenção e a Busca pelo Sentido Existencial',
+    autora: 'Erico Verissimo',
+    genero: 'Literatura Brasileira',
+    generoFiltro: 'classico drama reflexao existencialismo',
+    paginas: '288',
+    publicado: '1938',
+    data: '2026-05-06',
+    dataFormatada: '06 de maio, 2026',
+    resumo: 'Um médico dividido entre a obsessão pelo status social e a humanidade esquecida, em um dos maiores clássicos da nossa literatura.',
+    spineColor: '#4A5D23',
+    faceGradient: 'linear-gradient(145deg, #fdfcf0, #e6e2c3)',
+    ornamento: '🌿',
+    tags: ['Clássico', 'Literatura Nacional', 'Ética'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">Publicado em 1938, Olhai os Lírios do Campo é um dos romances mais conhecidos de Erico Verissimo e se destaca por sua abordagem direta sobre escolhas de vida, ambição e sentido existencial. A narrativa acompanha Eugênio Fontes, um médico de origem humilde que, marcado pela pobreza na infância, desenvolve uma obsessão por ascensão social e reconhecimento.</p>
+      
+      <p>Ao longo da obra, Eugênio abandona valores afetivos e éticos em troca de status, envolvendo-se com pessoas e ambientes que representam o sucesso material que sempre desejou. Nesse percurso, ele se afasta de Olívia, personagem que simboliza justamente o contraponto: sensibilidade, humanidade e uma visão mais simples porém mais profunda da vida.</p>
+      
+      <p>A estrutura do romance alterna passado e presente, revelando gradualmente as motivações internas do protagonista e construindo um retrato psicológico consistente. Após perdas significativas, Eugênio é levado a confrontar suas escolhas, entrando em um processo de reflexão que constitui o núcleo moral da obra.</p>
+
+      <blockquote class="review-blockquote">
+        O título faz referência a uma passagem bíblica do Sermão da Montanha, “olhai os lírios do campo”, que sugere uma crítica à excessiva preocupação com bens materiais e ao abandono daquilo que realmente importa: as relações humanas, a empatia e o sentido da existência.
+        <cite>— Erico Verissimo, <em>Olhai os Lírios do Campo</em></cite>
+      </blockquote>
+
+      <p>Do ponto de vista literário, Verissimo utiliza uma linguagem acessível, sem perder densidade temática. O romance dialoga com questões universais como ambição, arrependimento, amor e redenção, o que explica sua permanência como leitura relevante.</p>
+
+      <div class="pull-quote-review">
+        <p>"Em síntese, Olhai os Lírios do Campo não é apenas a história de um homem que erra, mas de alguém que, ao reconhecer suas falhas, busca reconstruir seu caminho."</p>
+      </div>
+
+      <p>É uma obra que convida à autocrítica e à revisão de prioridades, especialmente em uma sociedade ainda marcada pela valorização excessiva do sucesso material.</p>
+    `
+  },
+
+  {
     slug: 'o-que-resta-de-nos-resenha',
     titulo: 'O Que Resta de Nós',
     tituloResenha: 'A Delicadeza dos Recontros e a Arte de Recomeçar',
@@ -49,8 +89,8 @@ window.RESENHAS = [
       <p>Com uma escrita delicada, acolhedora e realista, Grimaldi mostra como, mesmo depois de grandes perdas, ainda é possível encontrar esperança e pertencimento. É uma leitura tocante, humana e cheia de sensibilidade.</p>
     `
   },
-  
-{
+
+  {
     slug: 'guerra-adoravel-guerra-resenha',
     titulo: 'Guerra Adorável Guerra',
     tituloResenha: 'O Amor sob o Olhar dos Deuses no Caos da Grande Guerra',
