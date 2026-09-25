@@ -12,6 +12,51 @@
 window.RESENHAS = [
 
   {
+    slug: 'pachinko-resenha',
+    titulo: 'Pachinko',
+    tituloResenha: 'Pertencimento, Família e Sobrevivência Através das Gerações',
+    autora: 'Min Jin Lee',
+    genero: 'Ficção Histórica',
+    generoFiltro: 'romance historia drama familia asiática',
+    paginas: '528',
+    publicado: '2017',
+    data: '2026-09-24',
+    dataFormatada: '24 de setembro, 2026',
+    resumo: 'Uma épica saga familiar que atravessa gerações de uma família coreana no Japão, explorando identidade, preconceito e as escolhas para sobreviver.',
+    spineColor: '#8C1D24',
+    faceGradient: 'linear-gradient(145deg, #fce4e4, #f3b6b6)',
+    ornamento: '💮',
+    tags: ['Saga Familiar', 'Ásia', 'Ficção Histórica', 'Literatura Contemporânea'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">Em <em>Pachinko</em>, Min Jin Lee constrói uma grande saga familiar que atravessa gerações e acompanha a trajetória de uma família coreana no Japão ao longo do século XX. Mais do que um romance histórico, o livro é uma reflexão profunda sobre identidade, pertencimento, preconceito, amor e as escolhas que fazemos para sobreviver.</p>
+
+      <p>A história começa com Sunja, uma jovem coreana que vive com a mãe em uma pequena vila de pescadores. Sua vida muda completamente quando ela se envolve com Hansu, um homem mais velho que esconde estar casado. Ao descobrir a verdade e perceber que não deseja ocupar o lugar de amante, Sunja escolhe outro caminho: aceita se casar com Isak, um pastor cristão, e parte com ele para o Japão.</p>
+
+      <p>A partir dessa mudança, a narrativa se amplia. Acompanhamos não apenas Sunja, mas também seus filhos, netos e as gerações que vêm depois dela. É justamente nessa passagem do tempo que Pachinko ganha uma de suas maiores forças: as decisões tomadas por uma geração continuam ecoando na vida das seguintes.</p>
+
+      <p>No Japão, a família enfrenta dificuldades econômicas, preconceito e a constante sensação de não pertencer completamente a lugar algum. São coreanos em território japonês, carregando uma identidade que muitas vezes é motivo de discriminação, enquanto permanecem ligados a uma Coreia que também vai se transformando ao longo dos anos.</p>
+
+      <p>Sunja é o coração da história. Sua trajetória é marcada por perdas, renúncias e responsabilidades, mas também por uma enorme capacidade de resistência. Ela não é uma personagem idealizada. É uma mulher que precisa tomar decisões difíceis em um mundo no qual suas possibilidades são limitadas. Sua força está justamente na maneira como continua seguindo em frente, principalmente por aqueles que ama.</p>
+
+      <blockquote class="review-blockquote">
+        O título do livro também carrega um significado simbólico. O pachinko, um jogo de máquinas muito popular no Japão, representa de certa forma a própria existência dos personagens: há regras estabelecidas, circunstâncias que não podem ser controladas e uma grande dose de acaso. Ainda assim, eles continuam jogando, tentando encontrar alguma possibilidade de futuro.
+      </blockquote>
+
+      <p>Um dos aspectos mais interessantes do romance é que Min Jin Lee não transforma o sofrimento em algo romantizado. A pobreza, o preconceito e as dificuldades familiares são apresentados de maneira direta, mostrando como questões históricas e sociais podem determinar profundamente a vida de pessoas comuns.</p>
+
+      <p>Ao mesmo tempo, Pachinko é uma história sobre amor. Não apenas o amor romântico, mas o amor entre mães e filhos, irmãos, maridos e esposas e entre diferentes gerações. É esse sentimento que muitas vezes sustenta os personagens quando tudo ao redor parece desmoronar.</p>
+
+      <div class="pull-quote-review">
+        <p>"Ao terminar o livro, fica a sensação de ter acompanhado não apenas uma família, mas uma parte da história de um povo. Pachinko mostra como nossas origens, nossas escolhas e até mesmo as circunstâncias que não escolhemos podem atravessar gerações."</p>
+      </div>
+
+      <p>É uma leitura densa, emocionante e profundamente humana. Uma daquelas histórias que permanecem na memória mesmo depois da última página, principalmente porque, por trás de todos os acontecimentos históricos, existe algo muito simples e universal: o desejo de encontrar um lugar no mundo e deixar um caminho um pouco melhor para aqueles que vêm depois de nós.</p>
+    `
+  },
+
+  {
     slug: 'herdeiras-do-mar-resenha',
     titulo: 'Herdeiras do Mar',
     tituloResenha: 'Memória, Trauma e a Força Feminina na Segunda Guerra Mundial',
@@ -382,51 +427,6 @@ window.RESENHAS = [
           <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;color:#8C0327;font-size:.85rem;border-bottom:1px solid rgba(140,3,39,.2);padding-bottom:2px;">← Voltar ao início</a>
         </div>
       </section>
-    `
-  },
-
-  {
-    slug: 'pachinko-resenha',
-    titulo: 'Pachinko',
-    tituloResenha: 'Pertencimento, Família e Sobrevivência Através das Gerações',
-    autora: 'Min Jin Lee',
-    genero: 'Ficção Histórica',
-    generoFiltro: 'romance historia drama familia asiática',
-    paginas: '528',
-    publicado: '2017',
-    data: '2026-09-24',
-    dataFormatada: '24 de setembro, 2026',
-    resumo: 'Uma épica saga familiar que atravessa gerações de uma família coreana no Japão, explorando identidade, preconceito e as escolhas para sobreviver.',
-    spineColor: '#8C1D24',
-    faceGradient: 'linear-gradient(145deg, #fce4e4, #f3b6b6)',
-    ornamento: '💮',
-    tags: ['Saga Familiar', 'Ásia', 'Ficção Histórica', 'Literatura Contemporânea'],
-    notaMedia: '',
-    notaContagem: 'Seja a primeira a avaliar',
-    conteudo: `
-      <p class="lead-paragraph">Em <em>Pachinko</em>, Min Jin Lee constrói uma grande saga familiar que atravessa gerações e acompanha a trajetória de uma família coreana no Japão ao longo do século XX. Mais do que um romance histórico, o livro é uma reflexão profunda sobre identidade, pertencimento, preconceito, amor e as escolhas que fazemos para sobreviver.</p>
-
-      <p>A história começa com Sunja, uma jovem coreana que vive com a mãe em uma pequena vila de pescadores. Sua vida muda completamente quando ela se envolve com Hansu, um homem mais velho que esconde estar casado. Ao descobrir a verdade e perceber que não deseja ocupar o lugar de amante, Sunja escolhe outro caminho: aceita se casar com Isak, um pastor cristão, e parte com ele para o Japão.</p>
-
-      <p>A partir dessa mudança, a narrativa se amplia. Acompanhamos não apenas Sunja, mas também seus filhos, netos e as gerações que vêm depois dela. É justamente nessa passagem do tempo que Pachinko ganha uma de suas maiores forças: as decisões tomadas por uma geração continuam ecoando na vida das seguintes.</p>
-
-      <p>No Japão, a família enfrenta dificuldades econômicas, preconceito e a constante sensação de não pertencer completamente a lugar algum. São coreanos em território japonês, carregando uma identidade que muitas vezes é motivo de discriminação, enquanto permanecem ligados a uma Coreia que também vai se transformando ao longo dos anos.</p>
-
-      <p>Sunja é o coração da história. Sua trajetória é marcada por perdas, renúncias e responsabilidades, mas também por uma enorme capacidade de resistência. Ela não é uma personagem idealizada. É uma mulher que precisa tomar decisões difíceis em um mundo no qual suas possibilidades são limitadas. Sua força está justamente na maneira como continua seguindo em frente, principalmente por aqueles que ama.</p>
-
-      <blockquote class="review-blockquote">
-        O título do livro também carrega um significado simbólico. O pachinko, um jogo de máquinas muito popular no Japão, representa de certa forma a própria existência dos personagens: há regras estabelecidas, circunstâncias que não podem ser controladas e uma grande dose de acaso. Ainda assim, eles continuam jogando, tentando encontrar alguma possibilidade de futuro.
-      </blockquote>
-
-      <p>Um dos aspectos mais interessantes do romance é que Min Jin Lee não transforma o sofrimento em algo romantizado. A pobreza, o preconceito e as dificuldades familiares são apresentados de maneira direta, mostrando como questões históricas e sociais podem determinar profundamente a vida de pessoas comuns.</p>
-
-      <p>Ao mesmo tempo, Pachinko é uma história sobre amor. Não apenas o amor romântico, mas o amor entre mães e filhos, irmãos, maridos e esposas e entre diferentes gerações. É esse sentimento que muitas vezes sustenta os personagens quando tudo ao redor parece desmoronar.</p>
-
-      <div class="pull-quote-review">
-        <p>"Ao terminar o livro, fica a sensação de ter acompanhado não apenas uma família, mas uma parte da história de um povo. Pachinko mostra como nossas origens, nossas escolhas e até mesmo as circunstâncias que não escolhemos podem atravessar gerações."</p>
-      </div>
-
-      <p>É uma leitura densa, emocionante e profundamente humana. Uma daquelas histórias que permanecem na memória mesmo depois da última página, principalmente porque, por trás de todos os acontecimentos históricos, existe algo muito simples e universal: o desejo de encontrar um lugar no mundo e deixar um caminho um pouco melhor para aqueles que vêm depois de nós.</p>
     `
   }
 
