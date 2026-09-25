@@ -12,6 +12,45 @@
 window.RESENHAS = [
 
   {
+    slug: 'herdeiras-do-mar-resenha',
+    titulo: 'Herdeiras do Mar',
+    tituloResenha: 'Memória, Trauma e a Força Feminina na Segunda Guerra Mundial',
+    autora: 'Mary Lynn Bracht',
+    genero: 'Ficção Histórica',
+    generoFiltro: 'romance historia drama guerra',
+    paginas: '366',
+    publicado: '2018',
+    data: '2026-09-24',
+    dataFormatada: '24 de setembro, 2026',
+    resumo: 'Um romance histórico forte e doloroso sobre a ocupação japonesa da Coreia, abordando a violência sofrida pelas mulheres de conforto através da história de duas irmãs.',
+    spineColor: '#1E3D59',
+    faceGradient: 'linear-gradient(145deg, #e8f1f5, #b3cdd1)',
+    ornamento: '🌊',
+    tags: ['Segunda Guerra', 'Ásia', 'Ficção Histórica', 'Drama'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph"><em>Herdeiras do Mar</em>, de Mary Lynn Bracht, é um romance histórico forte e doloroso que aborda a ocupação japonesa da Coreia e, principalmente, a violência sofrida pelas chamadas “mulheres de conforto” durante esse período.</p>
+      
+      <p>A narrativa acompanha Hana, uma jovem mergulhadora da ilha de Jeju, que vive com sua família e aprendeu desde cedo a mergulhar no mar para ajudar no sustento de casa. Sua vida muda completamente quando ela percebe que um soldado japonês se aproxima de sua irmã mais nova, Emi. Para protegê-la, Hana se entrega no lugar dela e acaba sendo levada para longe de casa.</p>
+      
+      <p>A partir daí, o livro mostra a luta de Hana para sobreviver às atrocidades que enfrenta. Paralelamente, acompanhamos Emi anos depois, já adulta, carregando as consequências da separação e tentando reconstruir a própria vida. Essa alternância entre as duas irmãs mostra como uma experiência traumática pode atravessar décadas e afetar não apenas quem a viveu, mas também toda uma família.</p>
+
+      <p>Um dos pontos mais marcantes da obra é a relação entre as irmãs. O amor, a culpa, a saudade e o desejo de proteger uma à outra estão presentes durante toda a história. O mar também possui um significado importante: representa tanto a liberdade e a identidade de Hana quanto a distância que separa as duas irmãs.</p>
+
+      <blockquote class="review-blockquote">
+        A escrita de Mary Lynn Bracht é bastante envolvente, mas o livro não é uma leitura leve. Existem cenas de violência sexual, abuso, guerra e sofrimento psicológico que podem ser difíceis de ler. Ao mesmo tempo, a obra dá espaço para temas como resistência, memória, sobrevivência e força feminina.
+      </blockquote>
+
+      <div class="pull-quote-review">
+        <p>"No geral, Herdeiras do Mar é uma história sobre duas irmãs separadas pela guerra, mas também sobre a capacidade humana de continuar vivendo depois de experiências extremamente dolorosas."</p>
+      </div>
+
+      <p>É um livro que provoca reflexão sobre como a história pode ser apagada ou silenciada e sobre a importância de preservar a memória das vítimas.</p>
+    `
+  },
+
+  {
     slug: 'olhai-os-lirios-do-campo-resenha',
     titulo: 'Olhai os Lírios do Campo',
     tituloResenha: 'Ambição, Redenção e a Busca pelo Sentido Existencial',
