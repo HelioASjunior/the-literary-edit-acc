@@ -2042,3 +2042,28 @@ h4 {
 .toast-icon {
   font-size: 1.1rem;
 }
+
+@media (max-width: 768px) {
+  .floating-socials {
+    left: 50%;
+    right: auto;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .float-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .float-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .toast-container {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+}
