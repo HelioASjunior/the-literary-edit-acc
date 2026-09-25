@@ -12,6 +12,45 @@
 window.RESENHAS = [
 
   {
+    slug: 'a-bailarina-de-auschwitz-resenha',
+    titulo: 'A Bailarina de Auschwitz',
+    tituloResenha: 'Memórias, Trauma e a Escolha da Liberdade',
+    autora: 'Edith Eva Eger',
+    genero: 'Biografia / Memórias',
+    generoFiltro: 'biografia historia drama superacao holocausto',
+    paginas: '304',
+    publicado: '2017',
+    data: '2026-09-25',
+    dataFormatada: '25 de setembro, 2026',
+    resumo: 'As memórias de uma sobrevivente do Holocausto que transformou sua dor em lição sobre liberdade, perdão e a capacidade de reconstrução humana.',
+    spineColor: '#3A3A3A',
+    faceGradient: 'linear-gradient(145deg, #f2f2f2, #d6d6d6)',
+    ornamento: '🩰',
+    tags: ['Holocausto', 'Segunda Guerra', 'Superação', 'Memórias'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">A Bailarina de Auschwitz é um livro doloroso, emocionante e, acima de tudo, profundamente humano. Escrito por Edith Eger, psicóloga e sobrevivente do Holocausto, o livro combina memórias de sua experiência nos campos de concentração nazistas com reflexões sobre trauma, liberdade, perdão e a capacidade humana de reconstruir a própria vida.</p>
+
+      <p>Edith tinha apenas 16 anos quando foi enviada para Auschwitz com seus pais e sua irmã. Separada dos pais logo na chegada, ela enfrentou fome, violência, medo e a constante ameaça da morte. Em meio a essa realidade brutal, Edith foi obrigada a dançar para Josef Mengele, o médico conhecido por seus experimentos em Auschwitz. A dança, que poderia representar apenas mais um momento de humilhação, tornou-se também uma lembrança de que ainda existia dentro dela algo que os nazistas não poderiam controlar: sua capacidade de escolher como responder àquilo que estava vivendo.</p>
+
+      <p>O livro, porém, não termina com a libertação do campo. E esse é um dos aspectos mais marcantes da obra. Edith mostra que sobreviver fisicamente não significa estar livre das consequências do trauma. Durante muitos anos, ela precisou confrontar as marcas deixadas pela guerra, pela perda e pela culpa. Sua trajetória como psicóloga surge justamente desse processo de compreender a própria dor e ajudar outras pessoas a enfrentarem as suas.</p>
+
+      <p>Um dos grandes temas da obra é a liberdade. Para Edith, ser livre não significa apagar o passado ou fingir que aquilo não aconteceu. Significa compreender que, embora não possamos escolher tudo o que nos acontece, podemos buscar escolher o que fazemos com aquilo que aconteceu.</p>
+
+      <blockquote class="review-blockquote">
+        A escrita é direta e acessível, mas o conteúdo é intenso. Algumas passagens são difíceis de ler, especialmente quando Edith descreve a separação de sua família e as condições desumanas dos campos de concentração. Ainda assim, o livro não se transforma apenas em um relato sobre sofrimento. Ele também fala sobre amor, esperança, responsabilidade e sobre a possibilidade de encontrar sentido depois de experiências devastadoras.
+      </blockquote>
+
+      <p>A Bailarina de Auschwitz é uma leitura que permanece na memória porque não apresenta a sobrevivência como um simples ato de resistir, mas como um processo contínuo de reconstrução. Edith Eger transforma sua história pessoal em uma reflexão universal sobre as prisões que carregamos, algumas impostas pelas circunstâncias, outras construídas dentro de nós.</p>
+
+      <div class="pull-quote-review">
+        <p>"É um livro sobre Auschwitz, mas também é um livro sobre a vida depois de Auschwitz. Sobre aquilo que fazemos com nossas cicatrizes e sobre a possibilidade de continuar vivendo sem permitir que o passado seja o único autor da nossa história."</p>
+      </div>
+    `
+  },
+
+  {
     slug: 'pachinko-resenha',
     titulo: 'Pachinko',
     tituloResenha: 'Pertencimento, Família e Sobrevivência Através das Gerações',
