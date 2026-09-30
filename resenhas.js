@@ -12,6 +12,45 @@
 window.RESENHAS = [
 
   {
+    slug: 'ordem-de-bloqueio-resenha',
+    titulo: 'Ordem de Bloqueio',
+    tituloResenha: 'Finanças, Política e a Rede Global de Corrupção na Rússia',
+    autora: 'Bill Browder',
+    genero: 'Biografia / Não Ficção',
+    generoFiltro: 'naoficcao biografia politica investigacao suspense',
+    paginas: '336',
+    publicado: '2022',
+    data: '2026-09-30',
+    dataFormatada: '30 de setembro, 2026',
+    resumo: 'Um relato real e tenso sobre o assassinato de Sergei Magnitsky, a criação da Lei Magnitsky e a cruzada para expor a lavagem de dinheiro no topo do poder russo.',
+    spineColor: '#1A1A24',
+    faceGradient: 'linear-gradient(145deg, #e5e8ec, #b8c1ec)',
+    ornamento: '⚖️',
+    tags: ['Investigação', 'Política Internacional', 'História Real', 'Não Ficção'],
+    notaMedia: '',
+    notaContagem: 'Seja a primeira a avaliar',
+    conteudo: `
+      <p class="lead-paragraph">Ordem de Bloqueio, de Bill Browder, é um livro que mistura investigação, política, corrupção e suspense em uma história que parece roteiro de filme, mas é apresentada pelo autor como resultado de acontecimentos que marcaram profundamente sua vida.</p>
+      
+      <p>Browder foi um investidor estrangeiro que fez negócios na Rússia após a queda da União Soviética. Sua trajetória muda quando ele passa a denunciar esquemas de corrupção envolvendo grandes empresas e autoridades russas. Seu advogado, Sergei Magnitsky, também se envolve na investigação de uma grande fraude fiscal e acaba preso. Magnitsky morre sob custódia das autoridades russas, acontecimento que transforma a vida de Browder e dá origem a uma longa batalha internacional.</p>
+      
+      <p>A partir daí, Browder passa a perseguir o dinheiro envolvido na fraude. O que começa como uma investigação financeira se transforma em uma verdadeira rede internacional, envolvendo empresas, bancos, imóveis, processos judiciais e diferentes países.</p>
+
+      <p>Um dos pontos centrais da obra é a criação e expansão da chamada Lei Magnitsky, mecanismo que permite impor sanções financeiras e restrições a pessoas acusadas de corrupção e violações de direitos humanos. Em vez de simplesmente tentar levar essas pessoas aos tribunais, a estratégia é atingir aquilo que, segundo Browder, sustenta grande parte de seu poder: o acesso ao sistema financeiro internacional.</p>
+
+      <blockquote class="review-blockquote">
+        O livro também apresenta a visão de Browder sobre Vladimir Putin e sobre a relação entre dinheiro, corrupção e poder na Rússia. É importante lembrar que a obra é um relato pessoal e apresenta principalmente a interpretação e as acusações feitas pelo próprio autor, o que torna interessante também observar os acontecimentos de forma crítica.
+      </blockquote>
+
+      <p>O que mais chama atenção em Ordem de Bloqueio é justamente a maneira como uma investigação financeira aparentemente distante se transforma em uma história de perseguição, ameaças, disputas jurídicas e conflitos políticos internacionais.</p>
+
+      <div class="pull-quote-review">
+        <p>"É uma leitura que mostra como o dinheiro pode atravessar fronteiras com facilidade e como rastrear seus caminhos pode revelar relações de poder muito maiores do que se imaginava inicialmente."</p>
+      </div>
+    `
+  },
+
+  {
     slug: 'a-bailarina-de-auschwitz-resenha',
     titulo: 'A Bailarina de Auschwitz',
     tituloResenha: 'Memórias, Trauma e a Escolha da Liberdade',
